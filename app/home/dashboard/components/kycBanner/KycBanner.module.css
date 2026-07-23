@@ -1,25 +1,95 @@
 .banner {
-  padding: 5px;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
   width: 100%;
-  height: 7vh;
-  font-size: 16px;
-  color: white;
-  /* background-color: #03C03C; */
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  margin-bottom: 20px;
-  border-radius: 5px;
-  clip-path: polygon(100% 0, 85% 50%, 100% 100%, 0% 100%, 0 100%, 0% 0%);
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(27, 54, 93, 0.05);
+  margin-bottom: 12px;
 }
-#heading {
-  font-weight: 300;
-  text-align: center;
-  padding: 7px;
-  font-size: small;
+
+.badge {
+  flex: 0 0 auto;
+  min-width: 118px;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
+  gap: 2px;
+  padding: 12px 16px;
+  background: linear-gradient(
+    135deg,
+    var(--primary, #1b365d) 0%,
+    #243f6b 55%,
+    #9a7a3a 100%
+  );
+  color: #fff;
+  position: relative;
+}
+
+.badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 20px;
+  height: 100%;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.badgeEyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, #c5a059);
+  line-height: 1.2;
+}
+
+.badgeTitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px 12px 22px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--primary-deep, #142848);
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+  }
+
+  .badge {
+    max-width: none;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+  }
+
+  .badge::after {
+    display: none;
+  }
+
+  .message {
+    padding: 12px 14px;
+  }
 }
