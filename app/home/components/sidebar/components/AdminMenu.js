@@ -170,7 +170,7 @@ const AdminMenu = () => {
           }
         >
           <li>
-            <Link href="/home/team/sub-admins">Sub Admins</Link>
+            <Link href="/home/team/sub-admins" className={router === "/home/team/sub-admins" ? classes.activelink : ""}>Sub Admins</Link>
           </li>
         </ul>
       </li>
@@ -189,10 +189,10 @@ const AdminMenu = () => {
           }
         >
           <li>
-            <Link href="/home/transaction/orders">Orders</Link>
+            <Link href="/home/transaction/orders" className={router === "/home/transaction/orders" ? classes.activelink : ""}>Orders</Link>
           </li>
           <li>
-            <Link href="/home/transaction/payin">Transactions</Link>
+            <Link href="/home/transaction/payin" className={router === "/home/transaction/payin" ? classes.activelink : ""}>Transactions</Link>
           </li>
         </ul>
       </li>
@@ -212,38 +212,38 @@ const AdminMenu = () => {
           }
         >
           <li>
-            <Link href="/home/settlements/auth-settlement">Authorized</Link>
+            <Link href="/home/settlements/auth-settlement" className={router === "/home/settlements/auth-settlement" ? classes.activelink : ""}>Authorized</Link>
           </li>
           <li>
-            <Link href="/home/settlements/sale-settlement">Captured(Sale)</Link>
+            <Link href="/home/settlements/sale-settlement" className={router === "/home/settlements/sale-settlement" ? classes.activelink : ""}>Captured(Sale)</Link>
           </li>
           <li>
-            <Link href="/home/settlements/refund">Refund</Link>
+            <Link href="/home/settlements/refund" className={router === "/home/settlements/refund" ? classes.activelink : ""}>Refund</Link>
           </li>
           <li>
-            <Link href="/home/settlements/summary">Summary</Link>
+            <Link href="/home/settlements/summary" className={router === "/home/settlements/summary" ? classes.activelink : ""}>Summary</Link>
           </li>
           <li>
-            <Link href="/home/settlements/all-settlement">Settlements</Link>
+            <Link href="/home/settlements/all-settlement" className={router === "/home/settlements/all-settlement" ? classes.activelink : ""}>Settlements</Link>
           </li>
         </ul>
       </li>
       <li>
-        <Link href="/home/rolling-reserve">
+        <Link href="/home/rolling-reserve" className={router === "/home/rolling-reserve" ? classes.activelink : ""}>
           <span>
             <i className="bi-piggy-bank mx-1"></i> Rolling Reserve
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/payment-links">
+        <Link href="/home/payment-links" className={router === "/home/payment-links" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-link-45deg mx-1"></i> Payment Link
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/charge-back">
+        <Link href="/home/charge-back" className={router === "/home/charge-back" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-arrow-clockwise mx-1"></i> Charge Back
           </span>
@@ -257,35 +257,35 @@ const AdminMenu = () => {
         </Link>
       </li> */}
       <li>
-        <Link href="/home/remittance">
+        <Link href="/home/remittance" className={router === "/home/remittance" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Remittance
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/user-accounts">
+        <Link href="/home/user-accounts" className={router === "/home/user-accounts" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> User Accounts
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/load-money">
+        <Link href="/home/load-money" className={router === "/home/load-money" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Load Money
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/beneficiaries">
+        <Link href="/home/beneficiaries" className={router === "/home/beneficiaries" ? classes.activelink : ""}           >
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Beneficiaries
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/transactions">
+        <Link href="/home/transactions" className={router === "/home/transactions" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Payout Transactions
           </span>
@@ -293,21 +293,21 @@ const AdminMenu = () => {
       </li>
 
       <li>
-        <Link href="/home/transfer-money">
+        <Link href="/home/transfer-money" className={router === "/home/transfer-money" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Transfer Money
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/utility-payments">
+        <Link href="/home/utility-payments" className={router === "/home/utility-payments" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Utility Payments
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/fraud-prevention">
+        <Link href="/home/fraud-prevention" className={router === "/home/fraud-prevention" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-slash-circle mx-1"></i> Fraud Prevention
           </span>
@@ -408,7 +408,7 @@ const AdminMenu = () => {
         </ul>
       </li>
       <li>
-          <Link href="/home/documentation">
+          <Link href="/home/documentation" className={router === "/home/documentation" ? classes.activelink : ""}>
             <span>
               <i className="bi bi-slash-circle mx-1"></i> API Documentation
             </span>
