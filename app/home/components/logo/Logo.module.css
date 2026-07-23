@@ -1,0 +1,22 @@
+.logo {
+  height: auto;
+  width: 200px;
+}
+
+.logo.landing {
+  filter: none;
+}
+
+.logo.dashboard {
+  margin-top: 20px;
+  margin-left: 15px;
+  filter: none;
+  height: auto;
+  width: 200px;
+}
+
+.logo.checkout {
+  width: auto;
+  height: 50px;
+  margin-bottom: 20px;
+}

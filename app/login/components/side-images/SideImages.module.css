@@ -1,0 +1,15 @@
+.image {
+  position: absolute;
+}
+.image img {
+  width: 25vw;
+  height: auto;
+}
+.image.left {
+  top: 20%;
+  left: 5%;
+}
+.image.right {
+  top: 20%;
+  right: 7%;
+}

@@ -1,0 +1,25 @@
+.add {
+  min-height: 30px;
+  padding: 5px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: none;
+  background: var(--primary, #1b365d);
+  color: #fff;
+  display: inline-flex;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(27, 54, 93, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.add:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(27, 54, 93, 0.28);
+  color: #fff;
+}

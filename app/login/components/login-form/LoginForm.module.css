@@ -1,0 +1,242 @@
+.formPanel {
+  width: 100%;
+  max-width: 380px;
+}
+
+.logoWrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.mobileLogo {
+  display: none;
+}
+
+.logo {
+  object-fit: contain;
+  display: block;
+  width: min(240px, 100%) !important;
+  height: auto !important;
+  max-height: 110px !important;
+  background: transparent !important;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin: 0 0 8px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.fieldGroup input {
+  min-height: 34px !important;
+  height: 34px !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.78rem !important;
+}
+
+.fieldGroup input::placeholder {
+  color: #94a3b8 !important;
+  font-size: 0.74rem !important;
+}
+
+.passwordField {
+  position: relative;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  outline: none;
+  background: var(--primary-soft);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.eyeButton:hover {
+  background: rgba(27, 54, 93, 0.18);
+}
+
+.errorText {
+  display: block;
+  margin-top: 4px;
+  color: #c53030;
+  font-size: 0.82rem;
+}
+
+.errorMarker {
+  margin-right: 4px;
+}
+
+.forgotLink {
+  align-self: flex-end;
+  margin-top: 2px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.forgotLink:hover {
+  color: var(--primary-deep);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.signupPrompt {
+  margin: 2px 0 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.signupLink {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.signupLink:hover {
+  color: var(--primary-deep);
+  text-decoration: underline;
+}
+
+.backLink {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  color: var(--primary-deep);
+}
+
+.successPanel {
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 2.5rem;
+  color: #198754;
+  margin-bottom: 0.5rem;
+}
+
+.successTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.signup {
+  width: 100%;
+  max-width: 520px;
+}
+
+@media screen and (max-width: 900px) {
+  .mobileLogo {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .mobileLogo {
+    display: flex;
+  }
+
+  .logo {
+    width: min(220px, 100%) !important;
+    max-height: 100px !important;
+  }
+}
+
+@media screen and (max-height: 720px) {
+  .logoWrapper {
+    margin-bottom: 10px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .form {
+    gap: 10px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+}

@@ -1,0 +1,121 @@
+.dropdown {
+  padding: 6px 26px 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(141, 138, 138);
+  border: 1px solid rgba(148, 163, 184, 0.75);
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dropdown:focus {
+  border-color: rgba(27, 54, 93, 0.55);
+  box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.1);
+  outline: none;
+}
+
+.dropdown.active {
+  color: #1a2438;
+}
+
+#icon {
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+  color: var(--primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.menu {
+  position: absolute;
+  display: none;
+  z-index: 999;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(27, 54, 93, 0.14);
+  min-width: 100%;
+  width: max-content;
+  max-width: 200px;
+  top: calc(100% + 4px);
+  left: 0;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.menu.active {
+  display: flex;
+}
+
+.searchItem {
+  flex-shrink: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 5px 10px !important;
+  font-size: 0.72rem !important;
+  min-height: 28px !important;
+  height: 28px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #1a2438;
+  background: #fff !important;
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+.list {
+  margin: 0;
+  padding: 2px 0;
+  list-style: none;
+  max-height: 130px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+.list li {
+  list-style: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin: 0 3px;
+}
+
+.list li:hover {
+  background-color: var(--primary);
+}
+
+.list li:hover a {
+  color: white;
+}
+
+.list li a {
+  color: #1a2438;
+  display: block;
+  text-decoration: none;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activelink {
+  background-color: var(--primary-soft);
+}

@@ -1,0 +1,80 @@
+.draggable-table-container {
+  width: 100%;
+}
+
+.drag-n-drop-text {
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 100%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--primary);
+  user-select: none;
+  margin-bottom: 15px;
+}
+
+.draggable-table {
+  border-collapse: collapse;
+  background: #f8f9fa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 100%;
+  border: 1px solid #dee2e6;
+}
+
+.draggable-table thead th {
+  background-color: var(--primary);
+  color: white;
+  height: 30px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 12px 15px;
+  user-select: none;
+  text-align: left;
+  border-bottom: 2px solid var(--primary-deep);
+}
+
+.draggable-table tbody tr {
+  cursor: grab;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.draggable-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.draggable-table tbody td {
+  font-size: 0.95em;
+  font-weight: 400;
+  padding: 12px 15px;
+  user-select: none;
+  border-top: 1px solid #dee2e6;
+}
+
+.draggable-table tbody tr:nth-child(even) {
+  background-color: #f2f4f6;
+}
+
+.drag-over {
+  background-color: var(--accent-soft) !important;
+}
+
+.drag-over td {
+  color: #000000 !important;
+}
+
+.is-dragging {
+  background: rgba(197, 160, 89, 0.25) !important;
+  opacity: 0.8;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.is-dragging td {
+  color: #000000 !important;
+}
+
+.blueBg {
+  background-color: var(--primary) !important;
+  color: white !important;
+}

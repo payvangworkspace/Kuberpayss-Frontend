@@ -1,0 +1,173 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatarButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.avatarButton:hover {
+  box-shadow: 0 0 0 4px var(--primary-soft);
+  transform: translateY(-1px);
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(27, 54, 93, 0.18);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft));
+  border-bottom: 1px solid var(--border);
+}
+
+.avatarLarge {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  border: 2px solid var(--accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.email {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary-deep);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.role {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.closeButton {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background: rgba(27, 54, 93, 0.1);
+}
+
+.popoverBody {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.fieldLabel {
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.fieldValue {
+  font-size: 0.7rem;
+  color: #1a2438;
+  word-break: break-all;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.profileLink:hover {
+  background: var(--primary-soft);
+  color: var(--primary-deep);
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 18px rgba(27, 54, 93, 0.22);
+}
+
+.logoutButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(27, 54, 93, 0.3);
+}

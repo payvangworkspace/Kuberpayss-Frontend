@@ -1,0 +1,336 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #c5a059);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 3px 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 16px rgba(27, 54, 93, 0.05);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.fieldFull {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.field label,
+.fieldFull label,
+.optionField label:not(.permItem) {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.06em;
+  margin: 0 !important;
+  line-height: 1.2;
+  color: var(--primary-deep, #142848);
+}
+
+.field input,
+.field :global(.forminput),
+.fieldFull input,
+.fieldFull :global(.forminput),
+.optionField input:not([type="checkbox"]),
+.optionField :global(.forminput) {
+  min-height: 32px !important;
+  height: 32px !important;
+  padding: 5px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.74rem !important;
+  border: 1px solid rgba(148, 163, 184, 0.7) !important;
+  background: #fff !important;
+  color: #1a2438 !important;
+  width: 100%;
+  box-shadow: none !important;
+}
+
+.field input:focus,
+.field :global(.forminput):focus,
+.fieldFull input:focus,
+.fieldFull :global(.forminput):focus,
+.optionField input:not([type="checkbox"]):focus,
+.optionField :global(.forminput):focus {
+  border-color: rgba(27, 54, 93, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.1) !important;
+  outline: none !important;
+}
+
+.field input::placeholder,
+.fieldFull input::placeholder,
+.optionField input::placeholder {
+  color: #94a3b8 !important;
+  font-size: 0.7rem !important;
+}
+
+.field :global(input[name="dropdown"]),
+.fieldFull :global(input[name="dropdown"]) {
+  min-height: 32px !important;
+  height: 32px !important;
+  padding: 5px 10px !important;
+  font-size: 0.74rem !important;
+  border-radius: 8px !important;
+}
+
+.field input:disabled,
+.field :global(.forminput):disabled {
+  background: #f8fafc !important;
+  color: #64748b !important;
+  cursor: not-allowed;
+}
+
+.errorText {
+  display: block;
+  margin-top: 1px;
+  font-size: 0.64rem;
+  color: #dc2626;
+  line-height: 1.3;
+}
+
+.errorMarker {
+  color: #dc2626;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eef2f7;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.optionField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.permItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid #e8edf4;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  font-size: 0.7rem !important;
+  margin: 0 !important;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.permItem:hover {
+  border-color: rgba(27, 54, 93, 0.3);
+  background: rgba(27, 54, 93, 0.04);
+}
+
+.permItem:has(input:checked) {
+  border-color: rgba(197, 160, 89, 0.55);
+  background: rgba(197, 160, 89, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.2);
+}
+
+.permItem input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--primary, #1b365d);
+  cursor: pointer;
+}
+
+.permItem span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary-deep, #142848);
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.generatedBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid #e8edf4;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.generatedTitle {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+}
+
+.generatedLink {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--primary, #1b365d);
+  word-break: break-all;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.generatedLink:hover {
+  color: var(--accent, #c5a059);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid #eef2f7;
+}
+
+.actionsRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.backBtn,
+.submitBtn,
+.clearBtn {
+  min-height: 32px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.backBtn {
+  background: var(--primary, #1b365d);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(27, 54, 93, 0.2);
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, #2e9e5b, #166534);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(22, 101, 52, 0.22);
+}
+
+.clearBtn {
+  background: linear-gradient(135deg, var(--accent, #c5a059), #9a7a3a);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(197, 160, 89, 0.28);
+}
+
+.backBtn:hover,
+.submitBtn:hover,
+.clearBtn:hover {
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media screen and (max-width: 900px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actionsRight {
+    width: 100%;
+  }
+
+  .backBtn,
+  .submitBtn,
+  .clearBtn {
+    width: 100%;
+  }
+}

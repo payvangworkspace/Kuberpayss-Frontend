@@ -1,0 +1,319 @@
+.table {
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(27, 54, 93, 0.05);
+  overflow: hidden;
+  scrollbar-width: thin;
+}
+
+.export {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 0;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.exportActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.exportRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.export button,
+.pagination button {
+  border-radius: 8px;
+  min-height: 30px;
+  padding: 5px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: none;
+  background: var(--primary, #1b365d);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(27, 54, 93, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.export button:hover,
+.pagination button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(27, 54, 93, 0.28);
+}
+
+.pagination button {
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-height: 28px;
+  padding: 3px 12px;
+  box-shadow: none;
+}
+
+.pagination button:disabled {
+  background: rgba(27, 54, 93, 0.45);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 12px;
+  margin-top: 0;
+  border-top: 1px solid #eef2f7;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  container-type: inline-size;
+  container-name: tablescroll;
+}
+
+.tableScroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableScroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.tableScroll::-webkit-scrollbar-thumb {
+  background: rgba(27, 54, 93, 0.28);
+  border-radius: 999px;
+}
+
+.tableScroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 54, 93, 0.42);
+}
+
+/* table css */
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  min-width: max-content;
+}
+
+.table table thead tr th {
+  padding: 8px 10px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary-deep, #142848);
+  background: var(--table-header, #e8edf4);
+  border-bottom: 1px solid #e8edf4;
+  white-space: nowrap;
+  text-align: left;
+  vertical-align: middle;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  width: auto;
+  box-sizing: border-box;
+}
+
+.table table thead tr th:last-child {
+  width: auto;
+}
+
+.table table tbody tr td {
+  padding: 8px 10px;
+  font-size: 0.74rem;
+  color: #1e293b;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.table table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table table tbody tr:hover td {
+  background: rgba(27, 54, 93, 0.025);
+}
+
+.table table tbody tr td[colspan] {
+  padding: 0 !important;
+  border-bottom: none !important;
+  white-space: normal;
+  background: #fff;
+  vertical-align: middle;
+}
+
+.table table tbody tr:hover td[colspan] {
+  background: #fff;
+}
+
+.emptyMessage {
+  position: sticky;
+  left: 0;
+  width: 100cqw;
+  max-width: 100cqw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: 28px 16px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  background: #fff;
+}
+
+.checkboxCol {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  padding: 10px 14px 10px 16px !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.checkboxCol input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.table table tbody tr td:has(> input[type="checkbox"]) {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  padding: 8px 14px 8px 16px !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table table tbody tr td:has(> input[type="checkbox"]) input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* logo css */
+.logo_modal {
+  position: fixed;
+  left: 50%;
+  width: 20vw;
+  max-height: 50vh;
+  overflow-y: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+}
+
+.logo_modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+
+.logo_modal iframe body {
+  width: 50vw;
+  height: 60vh;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.logo_modal iframe {
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_modal i {
+  font-size: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.span span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.span {
+  display: flex;
+  flex-direction: column;
+}
+
+.small {
+  display: flex;
+  flex-direction: column;
+}
+
+/* aquirerPrivoritymodal  */
+.aqr_modal {
+  position: fixed;
+  left: 50%;
+  width: 80vw;
+  max-height: 50vh;
+  overflow-y: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+}
+
+.aqr_modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+
+.aqr_modal i {
+  font-size: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}

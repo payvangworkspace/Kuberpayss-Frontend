@@ -1,0 +1,104 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 8px 1.5rem;
+  text-align: center;
+  background: rgba(244, 246, 250, 0.92);
+  border-top: 1px solid rgba(27, 54, 93, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.footer p {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.4;
+}
+
+.copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.copyright i {
+  color: var(--accent, #c5a059);
+  font-size: 0.72rem;
+}
+
+.copyright strong {
+  color: var(--primary, #1b365d);
+  font-weight: 700;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent, #c5a059);
+  flex-shrink: 0;
+}
+
+.footerLink {
+  color: var(--primary, #1b365d);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+  color: var(--accent, #c5a059);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Landing / auth pages variant (shown over gradient background) */
+.footer.landing {
+  position: relative;
+  width: 100vw;
+  background: transparent;
+  border-top: none;
+  backdrop-filter: none;
+}
+
+.footer.landing p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer.landing .copyright strong,
+.footer.landing .copyright i {
+  color: #e8d9b8;
+}
+
+.footer.landing .footerLink {
+  color: #fff;
+}
+
+.footer.landing .footerLink:hover {
+  color: #e8d9b8;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 6px 1rem;
+  }
+
+  .footer p {
+    gap: 8px;
+    font-size: 0.64rem;
+  }
+
+  .footer.landing {
+    position: relative;
+    width: 80vw;
+  }
+}

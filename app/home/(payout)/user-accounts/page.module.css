@@ -1,0 +1,250 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #c5a059);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 3px 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.filterBar {
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 0;
+  box-shadow: 0 4px 14px rgba(27, 54, 93, 0.05);
+  position: relative;
+  z-index: 20;
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.filterHeaderIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 54, 93, 0.08);
+  color: var(--primary);
+  font-size: 0.72rem;
+}
+
+.filterHeaderTitle {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary-deep);
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.filterField {
+  flex: 1 1 150px;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.filterField label {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.06em;
+  color: var(--primary-deep, #142848) !important;
+}
+
+.filterField :global(input) {
+  min-height: 30px !important;
+  height: 30px !important;
+  padding: 4px 8px !important;
+  font-size: 0.72rem !important;
+  border-radius: 8px !important;
+}
+
+.iconField {
+  position: relative;
+  width: 100%;
+}
+
+.fieldIcon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.74rem;
+  color: var(--primary);
+  opacity: 0.75;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.iconField :global(input[name="dropdown"]) {
+  padding-left: 26px !important;
+}
+
+.applyBtn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 5px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(27, 54, 93, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.applyBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(27, 54, 93, 0.3);
+}
+
+.merchantBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+.merchantName {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+  line-height: 1.2;
+}
+
+.merchantId {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.66rem;
+  color: #94a3b8;
+}
+
+.walletGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.walletcard {
+  min-width: 180px;
+  max-width: 220px;
+  flex: 1 1 180px;
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 14px rgba(27, 54, 93, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.walletcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(27, 54, 93, 0.1);
+}
+
+.walletTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.currencyBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(27, 54, 93, 0.1);
+  color: var(--primary, #1b365d);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.walletIcon {
+  color: var(--accent, #c5a059);
+  font-size: 0.9rem;
+}
+
+.balanceLabel {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.balanceValue {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary-deep, #142848);
+  line-height: 1.2;
+}
+
+.updatedAt {
+  margin: 6px 0 0;
+  font-size: 0.62rem;
+  color: #94a3b8;
+}
+
+@media screen and (max-width: 768px) {
+  .applyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

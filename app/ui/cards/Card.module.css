@@ -1,0 +1,325 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #e8edf4;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(27, 54, 93, 0.06);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(27, 54, 93, 0.1);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.iconCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.secondaryIcon {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.title {
+  margin: 1px 0 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.25;
+}
+
+.number {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.amountRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.64rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.amountValue {
+  color: #475569;
+  font-weight: 600;
+}
+
+.bottomBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+}
+
+/* Status variants */
+.success .iconCircle {
+  background: rgba(46, 158, 91, 0.12);
+  color: #2e9e5b;
+}
+.success .number {
+  color: #2e9e5b;
+}
+.success .bottomBar {
+  background: #2e9e5b;
+}
+
+.failed .iconCircle {
+  background: rgba(214, 69, 69, 0.12);
+  color: #d64545;
+}
+.failed .number {
+  color: #d64545;
+}
+.failed .bottomBar {
+  background: #d64545;
+}
+
+.pending .iconCircle {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+.pending .number {
+  color: #3b82f6;
+}
+.pending .bottomBar {
+  background: #3b82f6;
+}
+
+.captured .iconCircle {
+  background: rgba(22, 101, 52, 0.12);
+  color: #166534;
+}
+.captured .number {
+  color: #166534;
+}
+.captured .bottomBar {
+  background: #166534;
+}
+
+/* Metric / wave cards */
+.metric {
+  background: linear-gradient(135deg, #fff 55%, var(--metric-tint, #fff7ed) 100%);
+}
+
+.metric .iconCircle {
+  border-radius: 12px;
+}
+
+.metricWave {
+  position: absolute;
+  right: -20px;
+  bottom: -10px;
+  width: 120px;
+  height: 80px;
+  opacity: 0.18;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 40%, var(--metric-color, #f59e0b), transparent 65%);
+}
+
+.settled {
+  --metric-color: #f59e0b;
+  --metric-tint: #fff7ed;
+}
+.settled .iconCircle {
+  background: rgba(245, 158, 11, 0.14);
+  color: #d97706;
+}
+.settled .number {
+  color: #b45309;
+}
+
+.unsettled {
+  --metric-color: #8b5cf6;
+  --metric-tint: #f5f3ff;
+}
+.unsettled .iconCircle {
+  background: rgba(139, 92, 246, 0.14);
+  color: #7c3aed;
+}
+.unsettled .number {
+  color: #6d28d9;
+}
+
+.refund {
+  --metric-color: #14b8a6;
+  --metric-tint: #f0fdfa;
+}
+.refund .iconCircle {
+  background: rgba(20, 184, 166, 0.14);
+  color: #0d9488;
+}
+.refund .number {
+  color: #0f766e;
+}
+
+/* Charge / navy cards */
+.charge {
+  background: linear-gradient(145deg, #1b365d 0%, #142848 100%);
+  border: none;
+  color: #fff;
+  min-height: 100px;
+  justify-content: space-between;
+}
+
+.chargeTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.chargeIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  background: rgba(197, 160, 89, 0.22);
+  color: #e8d9b8;
+}
+
+.toneBlue {
+  background: #3b82f6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.4);
+}
+
+.tonePurple {
+  background: #8b5cf6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(139, 92, 246, 0.4);
+}
+
+.toneTeal {
+  background: #14b8a6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(20, 184, 166, 0.4);
+}
+
+.toneOrange {
+  background: #f97316;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(249, 115, 22, 0.4);
+}
+
+.chargeValue {
+  margin: 6px 0 1px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.chargeLabel {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  position: relative;
+  z-index: 1;
+}
+
+.chargeFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.25);
+  position: relative;
+  z-index: 1;
+}
+
+.chargeWatermark {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.6rem;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.settleBtn,
+.arrowBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(197, 160, 89, 0.25);
+  color: #e8d9b8;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.settleBtn {
+  width: auto;
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c5a059, #1b365d);
+  color: #fff;
+}
+
+.arrowBtn:hover,
+.settleBtn:hover {
+  transform: translateY(-1px);
+  background: rgba(197, 160, 89, 0.4);
+}
+
+.settleBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* legacy ids for any other usages */
+#total,
+#success,
+#failed,
+#pending,
+#info,
+#charge {
+  /* kept for backwards compatibility; styled via class variants */
+}

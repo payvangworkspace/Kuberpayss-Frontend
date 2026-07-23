@@ -1,0 +1,228 @@
+.loginPage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top right, var(--accent-soft), transparent 28%),
+    radial-gradient(circle at bottom left, var(--primary-soft), transparent 24%),
+    linear-gradient(180deg, var(--brand-cream) 0%, #eef2f8 50%, var(--brand-cream) 100%);
+  color: #1a2438;
+}
+
+.loginPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(197, 160, 89, 0.1), transparent 16%),
+    radial-gradient(circle at 82% 82%, rgba(27, 54, 93, 0.08), transparent 20%);
+  pointer-events: none;
+}
+
+.loginCard {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 40px);
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(27, 54, 93, 0.12);
+  overflow: hidden;
+}
+
+.loginCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 18% 12%, var(--accent-soft), transparent 32%);
+  pointer-events: none;
+}
+
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem 1.85rem;
+  border-right: 1px solid var(--border);
+}
+
+.heroLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.1rem;
+  background: transparent;
+}
+
+.heroLogoImage {
+  width: min(260px, 100%) !important;
+  height: auto !important;
+  max-height: 120px !important;
+  object-fit: contain;
+  background: transparent !important;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+
+.heroText {
+  margin: 0.7rem 0 1rem;
+  max-width: 400px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.heroList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.heroList li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a2438;
+}
+
+.heroList li::before {
+  content: "•";
+  color: var(--brand-gold);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.formSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.75rem;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.wideCard {
+  width: min(980px, 100%);
+  grid-template-columns: 0.85fr 1.15fr;
+  max-height: calc(100vh - 24px);
+}
+
+.wideCard .heroSection {
+  padding: 1.4rem 1.5rem;
+}
+
+.wideCard .heroLogoImage {
+  max-height: 96px !important;
+  width: min(210px, 100%) !important;
+}
+
+.wideCard .heroTitle {
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+}
+
+.wideCard .heroText {
+  font-size: 0.78rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.wideCard .heroList {
+  gap: 0.45rem;
+}
+
+.wideCard .heroList li {
+  font-size: 0.78rem;
+}
+
+.wideCard .formSection {
+  padding: 1.15rem 1.35rem;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .loginCard {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+
+  .heroSection {
+    display: none;
+  }
+
+  .formSection {
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .loginPage {
+    padding: 14px;
+  }
+
+  .loginCard {
+    max-height: calc(100vh - 28px);
+    border-radius: 22px;
+  }
+
+  .formSection {
+    padding: 1.25rem 1.35rem;
+  }
+}
+
+@media screen and (max-height: 720px) {
+  .loginPage {
+    padding: 12px;
+  }
+
+  .loginCard {
+    max-height: calc(100vh - 24px);
+  }
+
+  .heroSection {
+    padding: 1.35rem 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 1.55rem;
+  }
+
+  .heroText {
+    margin: 0.6rem 0 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .heroList {
+    gap: 0.45rem;
+  }
+
+  .heroList li {
+    font-size: 0.8rem;
+  }
+
+  .formSection {
+    padding: 1.25rem 1.5rem;
+  }
+}

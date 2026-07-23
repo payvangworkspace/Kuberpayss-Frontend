@@ -1,0 +1,91 @@
+.permGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.permItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #e8edf4;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  font-size: 0.7rem !important;
+  margin: 0 !important;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.permItem:hover {
+  border-color: rgba(27, 54, 93, 0.3);
+  background: rgba(27, 54, 93, 0.04);
+}
+
+.permItem:has(input:checked) {
+  border-color: rgba(197, 160, 89, 0.55);
+  background: rgba(197, 160, 89, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.2);
+}
+
+.permItem input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--primary, #1b365d);
+  cursor: pointer;
+}
+
+.permItem span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary-deep, #142848);
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #eef2f7;
+}
+
+.loadingWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.shimmer {
+  display: block;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eef2f7 25%, #e2e8f0 37%, #eef2f7 63%);
+  background-size: 400% 100%;
+  animation: shimmerMove 1.3s ease-in-out infinite;
+}
+
+@keyframes shimmerMove {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .permGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,10 @@
+export const headers = [
+  "ORDER ID",
+  "ORDER REQ. ID",
+  "PAYABLE AMT",
+  "TRANSACTION TYPE",
+  "CUSTOMER NAME",
+  "CUSTOMER EMAIL",
+  "CUSTOMER CONTACT No.",
+  "STATUS",
+];

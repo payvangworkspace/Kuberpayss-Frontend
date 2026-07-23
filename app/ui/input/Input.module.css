@@ -1,0 +1,24 @@
+.input {
+  padding: 10px 14px;
+  font-weight: 400;
+  border: 1px solid rgba(148, 163, 184, 0.75);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  width: 100%;
+  display: inline;
+  color: #0f172a;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: rgba(27, 54, 93, 0.55);
+  box-shadow: 0 0 0 4px rgba(27, 54, 93, 0.12);
+}
+
+.input.search {
+  font-size: 14px;
+  padding: 5px;
+  width: 500px;
+}

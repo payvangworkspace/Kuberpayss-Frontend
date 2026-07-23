@@ -1,0 +1,35 @@
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.title.login {
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 5vh;
+  font-weight: 700;
+}
+
+.subtitle.landing {
+  line-height: 120%;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.pagename {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0;
+  color: var(--text-muted, gray);
+}
+
+@media screen and (max-width: 660px) {
+  .subtitle {
+    font-size: 30px;
+    line-height: 130%;
+  }
+}
