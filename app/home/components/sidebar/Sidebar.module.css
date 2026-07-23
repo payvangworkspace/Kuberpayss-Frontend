@@ -1,87 +1,194 @@
 .sidebar {
-  background-color: var(--primary);
+  background: linear-gradient(180deg, var(--primary, #1b365d) 0%, #142848 100%);
   height: 100vh;
   width: 270px;
+  min-width: 270px;
   overflow-y: auto;
-  scrollbar-width: thin;
-  transition: all 0.3s ease;
   overflow-x: hidden;
-}
-
-.activelink span {
-  color: var(--accent);
-}
-.menu {
-  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 160, 89, 0.45) transparent;
+  transition: all 0.3s ease;
+  border-right: 1px solid rgba(197, 160, 89, 0.18);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 40;
 }
-.menu li {
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.4);
+  border-radius: 999px;
+}
+
+.brand {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.activelink,
+.activelink span,
+.activelink i {
+  color: var(--accent, #c5a059) !important;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 12px 10px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.menu > li {
   list-style: none;
   position: relative;
 }
+
 .sidebar ul li a {
-  color: white;
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.78rem;
   text-decoration: none;
   display: flex;
-  font-weight: 500;
+  align-items: center;
   justify-content: space-between;
-}
-.sidebar ul li a:hover {
-  color: white;
-  font-weight: 800;
+  gap: 8px;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 8px;
+  line-height: 1.25;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
-/* submenu css */
+.sidebar ul li a span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sidebar ul li a i {
+  font-size: 0.92rem;
+  opacity: 0.92;
+}
+
+.sidebar ul li a > .bi-chevron-right {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sidebar ul li a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+}
+
+.sidebar ul li a.activelink {
+  background: rgba(197, 160, 89, 0.16);
+  color: var(--accent, #c5a059);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--accent, #c5a059);
+}
+
+.sidebar ul li a.activelink:hover {
+  background: rgba(197, 160, 89, 0.22);
+  color: var(--accent, #c5a059);
+}
+
+.menu > li:has(.submenu.active) > a {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-weight: 650;
+}
+
+.menu > li:has(.submenu.active) > a > .bi-chevron-right {
+  transform: rotate(90deg);
+  color: var(--accent, #c5a059);
+  opacity: 1;
+}
+
+/* submenu */
 .submenu {
+  list-style: none;
   visibility: hidden;
   opacity: 0;
-  top: 0;
-  padding: 0px;
-  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
   position: relative;
-  background-color: var(--primary-deep);
-  transition: all 0.3s ease-in-out;
+  background: transparent;
+  transition: max-height 0.28s ease, opacity 0.22s ease, padding 0.22s ease;
 }
+
 .submenu.active {
   opacity: 1;
-  top: 5px;
-  right: 0;
-  height: 100%;
-  padding: 5px 30px;
   visibility: visible;
-  transition: all 0.3s ease-in-out;
+  max-height: 480px;
+  padding: 4px 0 6px 8px;
+  margin: 2px 0 4px;
+  border-left: 2px solid rgba(197, 160, 89, 0.35);
+  margin-left: 14px;
 }
+
 .submenu li {
+  list-style: none;
   color: white;
-  list-style-type: disc;
+}
+
+.submenu li a {
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  padding: 6px 10px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  border-radius: 7px;
+}
+
+.submenu li a:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.submenu li a.activelink {
+  color: var(--accent, #c5a059) !important;
+  background: rgba(197, 160, 89, 0.14) !important;
+  font-weight: 700 !important;
+  box-shadow: none;
 }
 
 .submenu-list {
+  list-style: none;
   visibility: hidden;
   opacity: 0;
-  top: 0;
-  padding: 0px;
-  height: 0;
-  width: 120%;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   position: relative;
-  background-color: rgb(48, 47, 47);
-  transition: all 0.3s ease-in-out;
+  background: rgba(20, 40, 72, 0.55);
+  border-radius: 8px;
+  transition: max-height 0.28s ease, opacity 0.22s ease, padding 0.22s ease;
 }
+
 .submenu-list li {
   width: 100%;
+  list-style: none;
 }
+
 .submenu-list.active {
   opacity: 1;
-  top: 5px;
-  right: 0;
-  margin-bottom: 10px;
-  height: 100%;
-  left: -10px;
-  padding: 5px 30px;
   visibility: visible;
-  transition: all 0.3s ease-in-out;
+  max-height: 360px;
+  padding: 4px 6px;
+  margin: 4px 0 8px;
 }

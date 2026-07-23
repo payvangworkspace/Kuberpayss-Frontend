@@ -4,9 +4,11 @@ import Menu from "./components/Menu";
 
 export default function Sidebar() {
   return (
-    <div className={classes.sidebar}>
-      <Logo className="dashboard" />
+    <aside className={classes.sidebar}>
+      <div className={classes.brand}>
+        <Logo className="dashboard" />
+      </div>
       <Menu />
-    </div>
+    </aside>
   );
 }
