@@ -4,10 +4,13 @@ import styles from "./Dropdown.module.css";
 import DropdownMenu from "./Dropdown-menu";
 import ClickAwayListener from "react-click-away-listener";
 import { usePathname } from "next/navigation";
+
+const DEFAULT_OPTIONS = ["No data available"];
+
 export default function Dropdown({
   initialLabel,
   selectedValue,
-  options = ["No data available"],
+  options,
   onChange,
   id,
   value,
@@ -17,28 +20,37 @@ export default function Dropdown({
 }) {
   const [viewMenu, setViewMenu] = useState(false);
   const ref = useRef();
+  const resolvedOptions = options ?? DEFAULT_OPTIONS;
 
   const [dataToSend, setDataToSend] = useState([]);
 
   const path = usePathname();
 
   useEffect(() => {
-    if (options?.[0] == null) {
+    if (resolvedOptions?.[0] == null) {
       return;
     }
-    if (options?.find((option) => option?.[value]?.includes("All")) !== undefined) {
-      console.log("All option found");
-    }
 
-    if (options?.find((option) => option?.[value]?.includes("All")) !== undefined || path?.includes("add-") || all === false) {
-      setDataToSend(options);
-    } else {
-      setDataToSend([
-        { [id]: "", [value]: "All" },
-        ...options,
-      ]);
-    }
-  }, [path, id, value, options, all]);
+    const hasAllOption =
+      resolvedOptions?.find((option) =>
+        String(option?.[value] ?? "").includes("All"),
+      ) !== undefined;
+
+    const nextOptions =
+      hasAllOption || path?.includes("add-") || all === false
+        ? resolvedOptions
+        : [{ [id]: "", [value]: "All" }, ...resolvedOptions];
+
+    setDataToSend((prev) => {
+      if (
+        prev.length === nextOptions.length &&
+        prev.every((item, index) => item === nextOptions[index])
+      ) {
+        return prev;
+      }
+      return nextOptions;
+    });
+  }, [path, id, value, resolvedOptions, all]);
 
   return (
     <div
