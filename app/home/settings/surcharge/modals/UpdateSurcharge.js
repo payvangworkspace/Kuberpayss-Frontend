@@ -6,6 +6,8 @@ import Label from "@/app/ui/label/Label";
 import { validate } from "@/app/validations/forms/UpdateSurchargeFormValidation";
 import React, { Fragment, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import styles from "../page.module.css";
+
 const Backdrop = ({ onClick }) => {
   return <div className="backdrop" onClick={onClick}></div>;
 };
@@ -18,17 +20,19 @@ const Overlay = ({
   onSuccess,
 }) => {
   const { postData, error, response, loading } = usePostRequest(
-    endPoints.surcharge.updateSurcharge
+    endPoints.surcharge.updateSurcharge,
   );
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState(() =>
-    updateSurcharge(merchant.id, paymentType.id, currentValue)
+    updateSurcharge(merchant.id, paymentType.id, currentValue),
   );
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     setErrors({});
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = await validate(formData);
@@ -38,6 +42,7 @@ const Overlay = ({
     }
     await postData(formData);
   };
+
   useEffect(() => {
     if (response && !error) {
       successMsg(response.data.message || "Data updated successfully");
@@ -47,14 +52,18 @@ const Overlay = ({
   }, [response, error]);
 
   return (
-    <div className="overlay w-30">
-      <h6>Update Surcharge Value</h6>
-      <label htmlFor="username">Merchant Name:{merchant.name}</label>
-      <h5 id="username">ID:{merchant.id}</h5>
+    <div className={`${styles.modal} overlay`}>
+      <h6 className={styles.modalTitle}>Update Surcharge Value</h6>
+      <div className={styles.merchantMeta}>
+        <span className={styles.merchantMetaLabel}>Merchant</span>
+        <span className={styles.merchantMetaValue}>{merchant.name}</span>
+        <span className={styles.merchantMetaLabel}>ID</span>
+        <span className={styles.merchantMetaValue}>{merchant.id}</span>
+      </div>
       <form id="add" onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-12 mb-2">
-            <Label htmlFor="serviceTax" label="Enter Service Tax" />
+            <Label htmlFor="serviceTax" label="Service Tax" />
             <input
               type="text"
               name="serviceTax"
@@ -65,14 +74,11 @@ const Overlay = ({
               onChange={handleChange}
             />
             {errors.serviceTax && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.serviceTax}
-              </small>
+              <small className="text-danger">*{errors.serviceTax}</small>
             )}
           </div>
           <div className="col-12 mb-2">
-            <Label htmlFor="surchargeValue" label="Enter Surcharge Value" />
+            <Label htmlFor="surchargeValue" label="Surcharge Value" />
             <input
               type="text"
               name="surchargeValue"
@@ -83,23 +89,24 @@ const Overlay = ({
               onChange={handleChange}
             />
             {errors.surchargeValue && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.surchargeValue}
-              </small>
+              <small className="text-danger">*{errors.surchargeValue}</small>
             )}
           </div>
         </div>
         <div className="d-flex mt-2">
           <button
             type={loading ? "button" : "submit"}
+            className={styles.submitBtn}
             form="add"
             disabled={loading}
           >
-            {loading ? "processing.." : "Update"}
+            {loading ? "Processing..." : "Update"}
           </button>
-          <span className="mx-2"></span>
-          <button type="button" onClick={onClick}>
+          <button
+            type="button"
+            className={styles.closeBtn}
+            onClick={onClick}
+          >
             Close
           </button>
         </div>
@@ -107,6 +114,7 @@ const Overlay = ({
     </div>
   );
 };
+
 const UpdateSurcharge = ({
   merchant,
   paymentType,
@@ -118,7 +126,7 @@ const UpdateSurcharge = ({
     <Fragment>
       {createPortal(
         <Backdrop onClick={onClose} />,
-        document.getElementById("backdrop")
+        document.getElementById("backdrop"),
       )}
       {createPortal(
         <Overlay
@@ -128,7 +136,7 @@ const UpdateSurcharge = ({
           onClick={onClose}
           onSuccess={onSuccess}
         />,
-        document.getElementById("overlay")
+        document.getElementById("overlay"),
       )}
     </Fragment>
   );

@@ -8,13 +8,15 @@ import { successMsg } from "@/app/services/notify";
 import Dropdown from "@/app/ui/dropdown/Dropdown";
 import Label from "@/app/ui/label/Label";
 import { validate } from "@/app/validations/forms/AddSurchargeFormValidations";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import styles from "./AddForm.module.css";
 
 const AddForm = () => {
+  const router = useRouter();
   const formRef = useRef(null);
   const [formData, setFormData] = useState(addSurcharge);
   const [errors, setErrors] = useState({});
-  // Get Merchants
   const { selectedMerchant, merchantList, handleMerchantChange } =
     useMerchant();
 
@@ -33,7 +35,7 @@ const AddForm = () => {
   useEffect(() => {
     if (selectedMerchant.id) {
       getAllPaymentType(
-        endPoints.settings.merchantPaymentType + "/" + selectedMerchant.id
+        endPoints.settings.merchantPaymentType + "/" + selectedMerchant.id,
       );
     }
   }, [selectedMerchant]);
@@ -45,7 +47,7 @@ const AddForm = () => {
           "/" +
           selectedMerchant.id +
           "/" +
-          paymentType.id
+          paymentType.id,
       );
     }
   }, [paymentType]);
@@ -65,6 +67,7 @@ const AddForm = () => {
       mopType: { ...prev.mopType, mopTypeId: id },
     }));
   };
+
   const handleChange = (event) => {
     const { name, value, type } = event.target;
     setFormData({
@@ -75,8 +78,9 @@ const AddForm = () => {
   };
 
   const { postData, response, error, loading } = usePostRequest(
-    endPoints.surcharge.addSurcharge
+    endPoints.surcharge.addSurcharge,
   );
+
   async function handleSubmit(event) {
     event.preventDefault();
     const validationErrors = validate(formData);
@@ -86,6 +90,7 @@ const AddForm = () => {
     }
     await postData(formData);
   }
+
   useEffect(() => {
     if (response && !error) {
       if (response.data.status === "success") {
@@ -94,7 +99,7 @@ const AddForm = () => {
         setPaymentType({ id: "", name: "Select Payment Type" });
         setFormData(addSurcharge);
         setErrors({});
-        formRef.current.reset();
+        formRef.current?.reset();
       }
     }
   }, [response, error]);
@@ -106,177 +111,217 @@ const AddForm = () => {
       userName: id,
     }));
   };
+
+  const handleClear = () => {
+    setMopTypes({ id: "", name: "Select Mop Type" });
+    setPaymentType({ id: "", name: "Select Payment Type" });
+    setFormData(addSurcharge);
+    setErrors({});
+    formRef.current?.reset();
+  };
+
   return (
-    <div className="wrapper">
-      <form onSubmit={handleSubmit} ref={formRef}>
-        <div className="row">
-          <div className="col-md-4 col-sm-12 mb-3">
-            <Label htmlFor="merchant" label="Merchant" />
-            <Dropdown
-              initialLabel="Select Merchant"
-              selectedValue={selectedMerchant}
-              options={merchantList?.data.data}
-              onChange={handleMerchantSelect}
-              id="userId"
-              value="fullName"
-            />
+    <div className={`wrapper ${styles.page}`}>
+      <div className={styles.pageHeader}>
+        <div>
+          <p className={styles.eyebrow}>Settings</p>
+          <h1 className={styles.title}>Add Surcharge</h1>
+          <p className={styles.subtitle}>
+            Configure surcharge and charge values for a merchant
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.formCard}>
+        <form className={styles.form} onSubmit={handleSubmit} ref={formRef}>
+          <div className={styles.row}>
+            <div className={styles.field}>
+              <Label htmlFor="merchant" label="Merchant" />
+              <Dropdown
+                initialLabel="Select Merchant"
+                selectedValue={selectedMerchant}
+                options={merchantList?.data.data}
+                onChange={handleMerchantSelect}
+                id="userId"
+                value="fullName"
+              />
+            </div>
+            <div className={styles.field}>
+              <Label htmlFor="paymentType" label="Payment Type" />
+              <Dropdown
+                initialLabel="Select payment Type"
+                selectedValue={paymentType}
+                options={allPaymentType?.data}
+                onChange={handlePaymentTypeChange}
+                id="paymentTypeId"
+                value="paymentTypeName"
+              />
+            </div>
+            <div className={styles.field}>
+              <Label htmlFor="mopType" label="Mop Type" />
+              <Dropdown
+                initialLabel="Select Mop Type"
+                selectedValue={mopType}
+                options={allMopType?.data}
+                onChange={handleMopTypeChange}
+                id="mopTypeId"
+                value="mopTypeName"
+              />
+            </div>
+
+            <div className={styles.fieldFull}>
+              <Label htmlFor="fixCharge" label="Charge Type" />
+              <div className={styles.radioGroup}>
+                <span className={styles.radioItem}>
+                  <input
+                    type="radio"
+                    name="fixCharge"
+                    id="percentage"
+                    value={false}
+                    onChange={handleChange}
+                  />
+                  <Label htmlFor="percentage" label="Percentage Charge" />
+                </span>
+                <span className={styles.radioItem}>
+                  <input
+                    type="radio"
+                    name="fixCharge"
+                    id="fixed"
+                    value={true}
+                    onChange={handleChange}
+                  />
+                  <Label htmlFor="fixed" label="Fixed Charge" />
+                </span>
+              </div>
+            </div>
+
+            <div className={styles.field}>
+              <Label
+                htmlFor="serviceTax"
+                label={`Service Tax (${
+                  formData.fixCharge ? "amount" : "percentage"
+                })`}
+              />
+              <input
+                type="text"
+                name="serviceTax"
+                id="serviceTax"
+                placeholder="Enter service tax"
+                className="forminput"
+                onChange={handleChange}
+                value={formData.serviceTax}
+                required
+              />
+              {errors.serviceTax && (
+                <small className={styles.errorText}>
+                  *{errors.serviceTax}
+                </small>
+              )}
+            </div>
+
+            <div className={styles.field}>
+              <Label
+                htmlFor="surchargeValue"
+                label={`Surcharge Tax (${
+                  formData.fixCharge ? "amount" : "percentage"
+                })`}
+              />
+              <input
+                type="text"
+                name="surchargeValue"
+                id="surchargeValue"
+                placeholder="Enter surcharge value"
+                className="forminput"
+                onChange={handleChange}
+                value={formData.surchargeValue}
+                required
+              />
+              {errors.surchargeValue && (
+                <small className={styles.errorText}>
+                  *{errors.surchargeValue}
+                </small>
+              )}
+            </div>
+
+            <div className={styles.field}>
+              <Label
+                htmlFor="bankChargeValue"
+                label={`Bank Charge (${
+                  formData.fixCharge ? "amount" : "percentage"
+                })`}
+              />
+              <input
+                type="text"
+                name="bankChargeValue"
+                id="bankChargeValue"
+                placeholder="Enter bank charge"
+                className="forminput"
+                onChange={handleChange}
+                maxLength={256}
+                value={formData.bankChargeValue}
+                required
+              />
+              {errors.settlementStatus && (
+                <small className={styles.errorText}>
+                  *{errors.settlementStatus}
+                </small>
+              )}
+            </div>
+
+            <div className={styles.fieldFull}>
+              <Label htmlFor="onOffUs" label="Status" />
+              <div className={styles.radioGroup}>
+                <span className={styles.radioItem}>
+                  <input
+                    type="radio"
+                    name="onOffUs"
+                    id="onus"
+                    value={true}
+                    onChange={handleChange}
+                  />
+                  <Label htmlFor="onus" label="On Us" />
+                </span>
+                <span className={styles.radioItem}>
+                  <input
+                    type="radio"
+                    name="onOffUs"
+                    id="offus"
+                    value={false}
+                    onChange={handleChange}
+                  />
+                  <Label htmlFor="offus" label="Off Us" />
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="col-md-4 col-sm-12 mb-3">
-            <Label htmlFor="paymentType" label="Payment Type" />
-            <Dropdown
-              initialLabel="Select payment Type"
-              selectedValue={paymentType}
-              options={allPaymentType?.data}
-              onChange={handlePaymentTypeChange}
-              id="paymentTypeId"
-              value="paymentTypeName"
-            />
-          </div>
-          <div className="col-md-4 col-sm-12 mb-3">
-            <Label htmlFor="mopType" label="Mop Type" />
-            <Dropdown
-              initialLabel="Select Mop Type"
-              selectedValue={mopType}
-              options={allMopType?.data}
-              onChange={handleMopTypeChange}
-              id="mopTypeId"
-              value="mopTypeName"
-            />
-          </div>
-          <div className="col-12 mb-2">
-            <span className="d-flex gap-5">
-              <span className="d-flex gap-2 align-items-center">
-                <input
-                  type="radio"
-                  name="fixCharge"
-                  id="yes"
-                  value={false}
-                  onChange={handleChange}
-                />
-                <Label htmlFor="fixChrage" label="Percentage Charge" />
-              </span>
-              <span className="d-flex gap-2 align-items-center">
-                <input
-                  type="radio"
-                  name="fixCharge"
-                  id="no"
-                  value={true}
-                  onChange={handleChange}
-                />
-                <Label htmlFor="fixChrage" label="Fixed Charge" />
-              </span>
+
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={styles.backBtn}
+              onClick={() => router.back()}
+            >
+              Back
+            </button>
+            <span className={styles.actionsRight}>
+              <button
+                type={loading ? "button" : "submit"}
+                className={styles.submitBtn}
+                disabled={loading}
+              >
+                {loading ? "Please Wait..." : "Submit"}
+              </button>
+              <button
+                type="button"
+                className={styles.resetBtn}
+                onClick={handleClear}
+              >
+                Clear
+              </button>
             </span>
           </div>
-          <div className="col-md-4 col-sm-12 mb-2">
-            <Label
-              htmlFor="serviceTax"
-              label={`Enter Service Tax(${
-                formData.fixCharge ? "in amount" : "in percentage"
-              })`}
-            />
-            <input
-              type="text"
-              name="serviceTax"
-              id="serviceTax"
-              placeholder="Enter Service Tax"
-              className="forminput"
-              onChange={handleChange}
-              value={formData.serviceTax}
-              required
-            />
-            {errors.serviceTax && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.serviceTax}
-              </small>
-            )}
-          </div>
-          <div className="col-md-4 col-sm-12 mb-2">
-            <Label
-              htmlFor="surchargeValue"
-              label={`Enter Surcharge Tax(${
-                formData.fixCharge ? "in amount" : "in percentage"
-              })`}
-            />
-            <input
-              type="text"
-              name="surchargeValue"
-              id="surchargeValue"
-              placeholder="Enter Surcharge Value"
-              className="forminput"
-              onChange={handleChange}
-              value={formData.surchargeValue}
-              required
-            />
-            {errors.surchargeValue && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.surchargeValue}
-              </small>
-            )}
-          </div>
-          <div className="col-md-4 col-sm-12 mb-2">
-            <Label
-              htmlFor="bankChargeValue"
-              label={`Enter Bank Charge(${
-                formData.fixCharge ? "in amount" : "in percentage"
-              })`}
-            />
-            <input
-              type="text"
-              name="bankChargeValue"
-              id="bankChargeValue"
-              placeholder="Enter bank charge"
-              className="forminput"
-              onChange={handleChange}
-              maxLength={256}
-              value={formData.bankChargeValue}
-              required
-            />
-            {errors.settlementStatus && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.settlementStatus}
-              </small>
-            )}
-          </div>
-          <div className="col-12 mb-2">
-            <Label htmlFor="onOffUs" label="Select Status" />
-            <span className="d-flex gap-5">
-              <span className="d-flex gap-2 align-items-center">
-                <input
-                  type="radio"
-                  name="onOffUs"
-                  id="onus"
-                  value={true}
-                  onChange={handleChange}
-                />
-                <Label htmlFor="fixChrage" label="On Us" />
-              </span>
-              <span className="d-flex gap-2 align-items-center">
-                <input
-                  type="radio"
-                  name="onOffUs"
-                  id="offus"
-                  value={false}
-                  onChange={handleChange}
-                />
-                <Label htmlFor="fixChrage" label="Off Us" />
-              </span>
-            </span>
-          </div>
-        </div>
-        <div className="d-flex justify-content-end align-items-center gap-2 mt-3 mb-2">
-          <span className="d-flex gap-2">
-            <button type={"submit"} className="submit" disabled={loading}>
-              {loading ? "Please Wait..." : "Submit"}
-            </button>
-            <button type="reset" className="reset" onClick={() => {}}>
-              Clear
-            </button>
-          </span>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
