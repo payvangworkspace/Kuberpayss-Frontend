@@ -74,10 +74,10 @@ const MerchantMenu = () => {
           }
         >
           <li>
-            <Link href="/home/transaction/orders">Orders</Link>
+            <Link href="/home/transaction/orders" className={router === "/home/transaction/orders" ? classes.activelink : ""}>Orders</Link>
           </li>
           <li>
-            <Link href="/home/transaction/payin">Transactions</Link>
+            <Link href="/home/transaction/payin" className={router === "/home/transaction/payin" ? classes.activelink : ""}>Transactions</Link>
           </li>
         </ul>
       </li>
@@ -96,16 +96,16 @@ const MerchantMenu = () => {
           }
         >
           <li>
-            <Link href="/home/settlements/auth-settlement">Authorized</Link>
+            <Link href="/home/settlements/auth-settlement" className={router === "/home/settlements/auth-settlement" ? classes.activelink : ""}>Authorized</Link>
           </li>
           <li>
-            <Link href="/home/settlements/sale-settlement">Captured(Sale)</Link>
+            <Link href="/home/settlements/sale-settlement" className={router === "/home/settlements/sale-settlement" ? classes.activelink : ""}>Captured(Sale)</Link>
           </li>
           <li>
-            <Link href="/home/settlements/all-settlement">Settlements</Link>
+            <Link href="/home/settlements/all-settlement" className={router === "/home/settlements/all-settlement" ? classes.activelink : ""}>Settlements</Link>
           </li>
           <li>
-            <Link href="/home/settlements/refund">Refund</Link>
+            <Link href="/home/settlements/refund" className={router === "/home/settlements/refund" ? classes.activelink : ""}>Refund</Link>
           </li>
         </ul>
       </li>
@@ -117,42 +117,42 @@ const MerchantMenu = () => {
         </Link>
       </li> */}
       <li>
-        <Link href="/home/payment-links">
+        <Link href="/home/payment-links" className={router === "/home/payment-links" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-link-45deg mx-1"></i> Payment Link
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/remittance">
+        <Link href="/home/remittance" className={router === "/home/remittance" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Remittance
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/user-accounts">
+        <Link href="/home/user-accounts" className={router === "/home/user-accounts" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> User Accounts
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/load-money">
+        <Link href="/home/load-money" className={router === "/home/load-money" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Load Money
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/beneficiaries">
+        <Link href="/home/beneficiaries" className={router === "/home/beneficiaries" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Beneficiaries
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/transactions">
+        <Link href="/home/transactions" className={router === "/home/transactions" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-currency-exchange mx-1"></i> Payout Transactions
           </span>
@@ -166,14 +166,14 @@ const MerchantMenu = () => {
         </Link>
       </li> */}
       <li>
-        <Link href="/home/fraud-prevention">
+        <Link href="/home/fraud-prevention" className={router === "/home/fraud-prevention" ? classes.activelink : ""}   >
           <span>
             <i className="bi bi-slash-circle mx-1"></i> Fraud Prevention
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/documentation">
+        <Link href="/home/documentation" className={router === "/home/documentation" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-slash-circle mx-1"></i> API Documentation
           </span>
@@ -181,10 +181,7 @@ const MerchantMenu = () => {
       </li>
       <li>
         <Link
-          href="/home/reset-password"
-          className={
-            router === "/home/reset-password" ? classes.activelink : ""
-          }
+          href="/home/reset-password" className={router === "/home/reset-password" ? classes.activelink : ""} 
         >
           <span>
             <i className="bi bi-shield-lock mx-1"></i> Reset Password

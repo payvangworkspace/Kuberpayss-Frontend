@@ -161,10 +161,10 @@ const AcquirerMenu = () => {
           }
         >
           <li>
-            <Link href="/home/transaction/orders">Orders</Link>
+            <Link href="/home/transaction/orders" className={router === "/home/transaction/orders" ? classes.activelink : ""}>Orders</Link>
           </li>
           <li>
-            <Link href="/home/transaction/payin">Transactions</Link>
+            <Link href="/home/transaction/payin" className={router === "/home/transaction/payin" ? classes.activelink : ""}>Transactions</Link>
           </li>
         </ul>
       </li>
@@ -259,14 +259,14 @@ const AcquirerMenu = () => {
         </ul>
       </li>
       <li>
-        <Link href="/home/settlements">
+        <Link href="/home/settlements" className={router === "/home/settlements" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-hand-thumbs-up mx-1"></i> Settlements
           </span>
         </Link>
       </li>
       <li>
-        <Link href="/home/payment-links">
+        <Link href="/home/payment-links" className={router === "/home/payment-links" ? classes.activelink : ""}>
           <span>
             <i className="bi bi-link-45deg mx-1"></i> Payment Link
           </span>
