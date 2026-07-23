@@ -8,19 +8,77 @@ import { password } from "@/app/utils/message";
 import { validate } from "@/app/validations/forms/AddSubMerchantFormValidations";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import styles from "./AddForm.module.css";
+
+const PERMISSION_ITEMS = [
+  {
+    name: "viewOrders",
+    label: "View Orders",
+    value: "/home/transaction/orders",
+  },
+  {
+    name: "viewTransaction",
+    label: "View Transaction",
+    value: "/home/transaction/payin",
+  },
+  {
+    name: "viewPaymentLink",
+    label: "View Payment Link",
+    value: "/home/payment-links",
+  },
+  {
+    name: "addPaymentLink",
+    label: "Add Payment Link",
+    value: { page: "addPaymentLink", link: "" },
+  },
+  {
+    name: "authSettlement",
+    label: "Auth Settlement",
+    value: "/home/settlements/auth-settlement",
+  },
+  {
+    name: "saleSettlement",
+    label: "Sale Settlement",
+    value: "/home/settlements/sale-settlement",
+  },
+  {
+    name: "allSettlement",
+    label: "All Settlement",
+    value: "/home/settlements/auth-settlement",
+  },
+  {
+    name: "refund",
+    label: "Refund",
+    value: "/home/refund",
+  },
+  {
+    name: "viewChargeBack",
+    label: "Charge Back",
+    value: "/home/charge-back",
+  },
+  {
+    name: "viewRemittance",
+    label: "Remittance",
+    value: "/home/remittance",
+  },
+  {
+    name: "fraudPrevention",
+    label: "Fraud Prevention",
+    value: "/home/fraud-prevention",
+  },
+];
 
 const AddForm = () => {
   const router = useRouter();
   const formRef = useRef(null);
   const { loading, error, response, postData } = usePostRequest(
-    endPoints.settings.addSubMerchant
+    endPoints.settings.addSubMerchant,
   );
 
   const [formData, setFormData] = useState(addSubAdmin);
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // handle input change
   const handleChange = (event) => {
     const { name, value, type } = event.target;
     if (type === "checkbox") {
@@ -33,9 +91,9 @@ const AddForm = () => {
     }
     setErrors({});
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // TODO Validations
     const validationErrors = await validate(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -43,270 +101,202 @@ const AddForm = () => {
     }
     await postData(formData);
   };
+
   useEffect(() => {
     if (response && !error) {
       setFormData(addSubAdmin);
-      formRef.current.reset();
+      formRef.current?.reset();
     }
   }, [response, error]);
+
+  const handleClear = () => {
+    setErrors({});
+    setFormData(addSubAdmin);
+    setShowPassword(false);
+    formRef.current?.reset();
+  };
+
+  const renderError = (key) =>
+    errors[key] ? (
+      <small className={styles.errorText}>
+        <span className={styles.errorMarker}> *</span>
+        {errors[key]}
+      </small>
+    ) : null;
+
   return (
-    <div className="wrapper">
-      <form onSubmit={handleSubmit} ref={formRef}>
-        <div className="row">
-          <div className="col-md-6 col-sm-12 mb-2">
-            <Label htmlFor="fullName" label="Name" required={true} />
-            <input
-              type="text"
-              name="fullName"
-              id="fullName"
-              placeholder="Enter name"
-              className="forminput"
-              onChange={handleChange}
-              maxLength={256}
-              value={formData.fullName}
-            />
-            {errors.fullName && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.fullName}
-              </small>
-            )}
-          </div>
-          <div className="col-md-6 col-sm-12 mb-2">
-            <Label htmlFor="userId" label="Username" required={true} />
-            <input
-              type="email"
-              name="userId"
-              id="userId"
-              placeholder="Enter email/username"
-              className="forminput"
-              onChange={handleChange}
-              maxLength={256}
-              value={formData.userId}
-              autoComplete="off"
-              readOnly
-              onFocus={(e) => {
-                e.target.removeAttribute("readOnly");
-                e.target.setAttribute("autocomplete", "off");
-              }}
-            />
-            {errors.userId && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.userId}
-              </small>
-            )}
-          </div>
-          <div className="col-md-6 col-sm-12 mb-2">
-            <Label
-              htmlFor="contactNumber"
-              label="Contact Number"
-              required={true}
-            />
-            <input
-              type="text"
-              name="contactNumber"
-              id="contactNumber"
-              placeholder="Enter contact number"
-              className="forminput"
-              onChange={handleChange}
-              value={formData.contactNumber}
-            />
-            {errors.contactNumber && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.contactNumber}
-              </small>
-            )}
-          </div>
-          <div className="col-md-6 col-sm-12 mb-2">
-            <Label htmlFor="password" label="Password" required={true} />
-            <div style={{ position: "relative" }}>
+    <div className={`wrapper ${styles.page}`}>
+      <div className={styles.pageHeader}>
+        <div>
+          <p className={styles.eyebrow}>Manage Teams</p>
+          <h2 className={styles.title}>Add Sub Merchant</h2>
+          <p className={styles.subtitle}>
+            Create a sub merchant account and assign access permissions.
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.formCard}>
+        <form className={styles.form} onSubmit={handleSubmit} ref={formRef}>
+          <div className={styles.row}>
+            <div className={styles.field}>
+              <Label htmlFor="fullName" label="Name" required={true} />
               <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                id="password"
-                placeholder="Enter password"
+                type="text"
+                name="fullName"
+                id="fullName"
+                placeholder="Enter name"
                 className="forminput"
-                autoComplete="off"
-                value={formData.password}
                 onChange={handleChange}
+                maxLength={256}
+                value={formData.fullName}
+              />
+              {renderError("fullName")}
+            </div>
+
+            <div className={styles.field}>
+              <Label htmlFor="userId" label="Username" required={true} />
+              <input
+                type="email"
+                name="userId"
+                id="userId"
+                placeholder="Enter email/username"
+                className="forminput"
+                onChange={handleChange}
+                maxLength={256}
+                value={formData.userId}
+                autoComplete="off"
                 readOnly
                 onFocus={(e) => {
                   e.target.removeAttribute("readOnly");
                   e.target.setAttribute("autocomplete", "off");
                 }}
-                style={{ paddingRight: "40px" }} // space for icon
               />
-
-              {/* Eye Icon */}
-              <i
-                className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}
-                onClick={() => setShowPassword((prev) => !prev)}
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  color: "#666",
-                }}
-              ></i>
-            </div>
-            <small>
-              <InfoLabel content={password} />
-              <InfoLabel content="Password must contain at least one uppercase letter" />
-              <InfoLabel content="Password must contain at least one special character" />
-            </small>
-            {errors.password && (
-              <small className="text-danger">
-                <span className="text-danger"> *</span>
-                {errors.password}
-              </small>
-            )}
-          </div>
-          <h6>Account Permissions:</h6>
-          <div className="row">
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="viewOrders"
-                id="viewOrders"
-                value="/home/transaction/orders"
-                onChange={handleChange}
-              />
-              <span className="mx-1">View Orders</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="viewTransaction"
-                id="viewTransaction"
-                value="/home/transaction/payin"
-                onChange={handleChange}
-              />
-              <span className="mx-1">View Transaction</span>
+              {renderError("userId")}
             </div>
 
-            <div className="col-md-3 col-sm-12 mb-2 flex-wrap">
-              <input
-                type="checkbox"
-                name="viewPaymentLink"
-                id="viewPaymentLink"
-                value="/home/payment-links"
-                onChange={handleChange}
+            <div className={styles.field}>
+              <Label
+                htmlFor="contactNumber"
+                label="Contact Number"
+                required={true}
               />
-              <span className="mx-1">View Payment Link</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2">
               <input
-                type="checkbox"
-                name="addPaymentLink"
-                id="addPaymentLink"
-                value={{ page: "addPaymentLink", link: "" }}
+                type="text"
+                name="contactNumber"
+                id="contactNumber"
+                placeholder="Enter contact number"
+                className="forminput"
                 onChange={handleChange}
+                value={formData.contactNumber}
               />
-              <span className="mx-1">Add Payment Link</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="authSettlement"
-                id="authSettlement"
-                value="/home/settlements/auth-settlement"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Auth Settlement</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="saleSettlement"
-                id="saleSettlement"
-                value="/home/settlements/sale-settlement"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Sale Settlement</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="allSettlement"
-                id="allSettlement"
-                value="/home/settlements/auth-settlement"
-                onChange={handleChange}
-              />
-              <span className="mx-1">All Settlement</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2 flex-wrap">
-              <input
-                type="checkbox"
-                name="refund"
-                id="refund"
-                value="/home/refund"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Refund</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2 flex-wrap">
-              <input
-                type="checkbox"
-                name="viewChargeBack"
-                id="viewChargeBack"
-                value="/home/charge-back"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Charge Back</span>
-            </div>
-            <div className="col-md-3 col-sm-12 mb-2 flex-wrap">
-              <input
-                type="checkbox"
-                name="viewRemittance"
-                id="viewRemittance"
-                value="/home/remittance"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Remittance</span>
+              {renderError("contactNumber")}
             </div>
 
-            <div className="col-md-3 col-sm-12 mb-2">
-              <input
-                type="checkbox"
-                name="fraudPrevention"
-                id="fraudPrevention"
-                value="/home/fraud-prevention"
-                onChange={handleChange}
-              />
-              <span className="mx-1">Fraud Prevention</span>
+            <div className={styles.field}>
+              <Label htmlFor="password" label="Password" required={true} />
+              <div className={styles.passwordWrap}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder="Enter password"
+                  className="forminput"
+                  autoComplete="off"
+                  value={formData.password}
+                  onChange={handleChange}
+                  readOnly
+                  onFocus={(e) => {
+                    e.target.removeAttribute("readOnly");
+                    e.target.setAttribute("autocomplete", "off");
+                  }}
+                />
+                <i
+                  className={`bi ${
+                    showPassword ? "bi-eye-slash" : "bi-eye"
+                  } ${styles.eyeIcon}`}
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-hidden="true"
+                />
+              </div>
+              <div className={styles.hintList}>
+                <InfoLabel content={password} />
+                <InfoLabel content="Password must contain at least one uppercase letter" />
+                <InfoLabel content="Password must contain at least one special character" />
+              </div>
+              {renderError("password")}
             </div>
           </div>
-        </div>
-        <div className="d-flex justify-content-between gap-2 mt-2 mb-2">
-          <button type="button" className="back" onClick={() => router.back()}>
-            Back
-          </button>
-          <span className="d-flex gap-2">
+
+          <div className={styles.section}>
+            <h6 className={styles.sectionTitle}>Account Permissions</h6>
+            <div className={styles.permGrid}>
+              {PERMISSION_ITEMS.map((item) => (
+                <label
+                  key={item.name}
+                  className={styles.permItem}
+                  htmlFor={item.name}
+                >
+                  <input
+                    type="checkbox"
+                    name={item.name}
+                    id={item.name}
+                    value={
+                      typeof item.value === "object"
+                        ? JSON.stringify(item.value)
+                        : item.value
+                    }
+                    onChange={(e) => {
+                      const { name, type } = e.target;
+                      const rawValue =
+                        typeof item.value === "object"
+                          ? item.value
+                          : e.target.value;
+                      if (type === "checkbox") {
+                        setFormData({
+                          ...formData,
+                          permissions: {
+                            ...formData.permissions,
+                            [name]: rawValue,
+                          },
+                        });
+                      }
+                      setErrors({});
+                    }}
+                  />
+                  <span>{item.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.actions}>
             <button
-              type={loading ? "button" : "submit"}
-              className="submit"
-              disabled={loading}
+              type="button"
+              className={styles.backBtn}
+              onClick={() => router.back()}
             >
-              {loading ? "Please Wait..." : "Submit"}
+              Back
             </button>
-            <button
-              type="reset"
-              className="reset"
-              onClick={() => {
-                setErrors({});
-                setFormData(addCountry);
-              }}
-            >
-              Clear
-            </button>
-          </span>
-        </div>
-      </form>
+            <div className={styles.actionsRight}>
+              <button
+                type={loading ? "button" : "submit"}
+                className={styles.submitBtn}
+                disabled={loading}
+              >
+                {loading ? "Please Wait..." : "Submit"}
+              </button>
+              <button
+                type="button"
+                className={styles.clearBtn}
+                onClick={handleClear}
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

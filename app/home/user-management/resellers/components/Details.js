@@ -239,7 +239,6 @@ const Details = ({ role, userEmail, subAdmin }) => {
               ) : resellers.length > 0 ? (
                 resellers.map((item) => (
                   <tr key={item.userId}>
-                    <td className={styles.idCell}>{item.userId || "NA"}</td>
                     <td>
                       <div className={styles.nameCell}>
                         <span
@@ -254,6 +253,7 @@ const Details = ({ role, userEmail, subAdmin }) => {
                         </span>
                       </div>
                     </td>
+                    <td className={styles.idCell}>{item.userId || "NA"}</td>
                     <td className={styles.mutedCell}>
                       {item.contactNumber || "NA"}
                     </td>

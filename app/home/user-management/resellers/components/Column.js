@@ -1,6 +1,6 @@
 export const headers = [
-  "RESELLER ID",
   "RESELLER NAME",
+  "RESELLER ID",
   "PHONE",
   "ONBOARD BY",
   "ONBOARD DATE",
