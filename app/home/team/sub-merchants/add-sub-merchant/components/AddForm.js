@@ -242,25 +242,21 @@ const AddForm = () => {
                     name={item.name}
                     id={item.name}
                     value={
-                      typeof item.value === "object"
-                        ? JSON.stringify(item.value)
-                        : item.value
+                      typeof item.value === "string"
+                        ? item.value
+                        : JSON.stringify(item.value)
                     }
                     onChange={(e) => {
-                      const { name, type } = e.target;
-                      const rawValue =
-                        typeof item.value === "object"
-                          ? item.value
-                          : e.target.value;
-                      if (type === "checkbox") {
-                        setFormData({
-                          ...formData,
-                          permissions: {
-                            ...formData.permissions,
-                            [name]: rawValue,
-                          },
-                        });
-                      }
+                      const { name, checked } = e.target;
+                      setFormData((prev) => {
+                        const permissions = { ...prev.permissions };
+                        if (checked) {
+                          permissions[name] = item.value;
+                        } else {
+                          delete permissions[name];
+                        }
+                        return { ...prev, permissions };
+                      });
                       setErrors({});
                     }}
                   />

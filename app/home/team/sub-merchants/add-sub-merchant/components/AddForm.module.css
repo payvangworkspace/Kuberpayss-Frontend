@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  width: 100%;
 }
 
 .pageHeader {
