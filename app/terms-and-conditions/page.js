@@ -1,16 +1,25 @@
 import Link from "next/link";
 import Header from "../login/components/header/Header";
+import Footer from "../login/components/footer/Footer";
+import styles from "./Terms.module.css";
 
 export default function TermsAndConditions() {
   return (
-    <div style={{ fontSize: 14 }}>
-      <Header id="terms" />
-      <div className="container p-5">
-        <h2 className="text-center">Terms and conditions</h2>
-        <h4 className="text-center mb-4">
-          PART A: GENERAL TERMS AND CONDITIONS
-        </h4>
-        <p>
+    <div className={styles.page}>
+      <div className={styles.topBar}>
+        <Header />
+      </div>
+      <main className={styles.main}>
+        <article className={styles.docCard}>
+          <div className={styles.docHeader}>
+            <p className={styles.eyebrow}>Legal</p>
+            <h1 className={styles.title}>Terms and Conditions</h1>
+            <p className={styles.partTitle}>
+              PART A: GENERAL TERMS AND CONDITIONS
+            </p>
+          </div>
+          <div className={styles.content}>
+<p>
           This Document/Agreement is a computer-generated electronic record
           issued in compliance with Rule 3 of the Information Technology
           (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021,
@@ -872,7 +881,10 @@ export default function TermsAndConditions() {
           fines, or other financial obligations incurred through your use of the
           Services before termination.
         </p>
-      </div>
+          </div>
+        </article>
+      </main>
+      <Footer className="static" />
     </div>
   );
 }
