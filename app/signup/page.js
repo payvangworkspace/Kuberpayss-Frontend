@@ -5,7 +5,7 @@ const Signup = () => {
   return (
     <AuthLayout
       wide
-      heroTitle="Join Kuber Payss"
+      heroTitle="Join Kuber Pays"
       heroText="Create your merchant account and start accepting payments with clarity and control."
       heroItems={[
         "Simple merchant onboarding",

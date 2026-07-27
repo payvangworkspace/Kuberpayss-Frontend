@@ -135,7 +135,7 @@ export const addSinglePayout = () => {
     beneficiaryAccount: "",
     beneficiaryIFSCCode: "",
     vpaAddress: "",
-    returnUrl: "https://pg.kuberpayss.com",
+    returnUrl: "https://pg.kuberpays.com",
   };
 };
 
@@ -160,7 +160,7 @@ export const payUtilityPayment = () => {
     beneficiaryName: "",
     accountNumber: "",
     remark: "",
-    returnUrl: "https://pg.kuberpayss.com",
+    returnUrl: "https://pg.kuberpays.com",
   };
 };
 export const payGovtTax = () => {

@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Kuber Payss | Payments",
+  title: "Kuber Pays | Payments",
   description: "Fast, secure payments designed for merchants who value clarity, control, and reliability.",
 };
 

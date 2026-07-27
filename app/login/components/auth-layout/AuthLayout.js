@@ -1,11 +1,11 @@
 import Image from "next/image";
 import styles from "../../page.module.css";
-import logo from "../../../../public/images/kuberPay_logo.png";
+import logo from "../../../../public/images/kuberPays_logo.svg";
 
 export default function AuthLayout({
   children,
   wide = false,
-  heroTitle = "Welcome to Kuber Payss",
+  heroTitle = "Welcome to Kuber Pays",
   heroText = "Fast, secure payments designed for merchants who value clarity, control, and reliability.",
   heroItems = [
     "Instant transaction visibility",
@@ -20,7 +20,7 @@ export default function AuthLayout({
           <div className={styles.heroLogo}>
             <Image
               src={logo}
-              alt="Kuber Payss Logo"
+              alt="Kuber Pays Logo"
               width={260}
               height={120}
               className={styles.heroLogoImage}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-label="Kuber Pays">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b06a" />
+      <stop offset="100%" stop-color="#9a7a3a" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(8, 14)">
+    <rect x="8" y="28" width="72" height="52" rx="10" fill="#1b365d" />
+    <path d="M8 38c0-6 5-11 11-11h50c6 0 11 5 11 11v6H8v-6z" fill="#142848" />
+    <circle cx="68" cy="54" r="5" fill="#c5a059" />
+    <rect x="22" y="8" width="46" height="30" rx="5" fill="url(#gold)" transform="rotate(-12 45 23)" />
+    <rect x="30" y="14" width="38" height="24" rx="4" fill="#e8d9b8" transform="rotate(-8 49 26)" />
+    <rect x="36" y="20" width="22" height="3" rx="1.5" fill="#1b365d" transform="rotate(-8 47 21)" />
+  </g>
+
+  <text
+    x="108"
+    y="58"
+    fill="url(#gold)"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="700"
+    letter-spacing="0.5"
+  >
+    Kuber Pays
+  </text>
+
+  <text
+    x="110"
+    y="82"
+    fill="url(#gold)"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="11"
+    font-style="italic"
+    letter-spacing="1.8"
+  >
+    SIMPLIFY. INTEGRATE. SCALE.
+  </text>
+</svg>

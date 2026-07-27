@@ -14,7 +14,7 @@ import { saveAuthToken } from "@/app/services/cookieManager";
 import { errorMsg, successMsg } from "@/app/services/notify";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../../public/images/kuberPay_logo.png";
+import logo from "../../../../public/images/kuberPays_logo.svg";
 
 export default function LoginForm() {
   const { postData, loading, error, response } = usePost(endPoints.auth.login);
@@ -58,7 +58,7 @@ export default function LoginForm() {
       <div className={`${styles.logoWrapper} ${styles.mobileLogo}`}>
         <Image
           src={logo}
-          alt="Kuber Payss Logo"
+          alt="Kuber Pays Logo"
           width={240}
           height={110}
           className={styles.logo}

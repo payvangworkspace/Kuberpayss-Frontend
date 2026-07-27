@@ -104,7 +104,7 @@ export default function TermsAndConditions() {
         <p>
           1.1 We, along with our licensors where applicable, retain full
           ownership of all rights, titles, and interests in the Services,
-          including the Platform and the official website www.kuberpayss.com.
+          including the Platform and the official website www.kuberpays.com.
           This ownership extends to all associated intellectual property rights,
           whether registered or unregistered. We grant you a personal,
           non-exclusive, non-transferable, and limited right to access and use
@@ -800,8 +800,8 @@ export default function TermsAndConditions() {
           services from a merchant will include any charges associated with the
           DCC services used. To request invoices for DCC transactions, end users
           can contact{" "}
-          <Link href="mailto:support@kuberpayss.com">
-            support@kuberpayss.com
+          <Link href="mailto:support@kuberpays.com">
+            support@kuberpays.com
           </Link>{" "}
           and provide the payment ID and their contact number.
         </p>

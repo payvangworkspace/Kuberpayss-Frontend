@@ -3,6 +3,12 @@
   width: 200px;
 }
 
+.brandLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .logo.landing {
   filter: none;
 }

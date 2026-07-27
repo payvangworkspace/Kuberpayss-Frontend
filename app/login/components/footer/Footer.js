@@ -13,7 +13,7 @@ export default function Footer({ className = "" }) {
       <p>
         <span className={styles.copyright}>
           <i className="bi bi-c-circle" aria-hidden="true" />
-          {year} <strong>Kuberpayss</strong>. All rights reserved
+          {year} <strong>Kuber Pays</strong>. All rights reserved
         </span>
         <span className={styles.dot} aria-hidden="true" />
         <Link href="/terms-and-conditions" className={styles.footerLink}>

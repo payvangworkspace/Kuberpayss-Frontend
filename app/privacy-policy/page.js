@@ -1,19 +1,31 @@
 import Link from "next/link";
 import Header from "../login/components/header/Header";
+import Footer from "../login/components/footer/Footer";
+import styles from "../terms-and-conditions/Terms.module.css";
 
 export default function PrivacyPolicy() {
   return (
-    <div style={{ fontSize: 14 }}>
-      <Header id="terms" />
-      <div className="container p-5">
-        <h2 className="text-center mb-4">Privacy Policy</h2>
+    <div className={styles.page}>
+      <div className={styles.topBar}>
+        <Header />
+      </div>
+      <main className={styles.main}>
+        <article className={styles.docCard}>
+          <div className={styles.docHeader}>
+            <p className={styles.eyebrow}>Legal</p>
+            <h1 className={styles.title}>Privacy Policy</h1>
+            <p className={styles.partTitle}>
+              How we collect, use, and protect your information
+            </p>
+          </div>
+          <div className={styles.content}>
         <h6>Introduction to Privacy Policy </h6>
         <p>
           This privacy policy applies to your use of the website of Kuber Pay
-          Inc. hosted at www.kuberpayss.com, the Services (as defined under the
+          Inc. hosted at www.kuberpays.com, the Services (as defined under the
           Kuber Pays
           <Link href="/terms-and-conditions"> "Terms of Use"</Link>) and Kuber
-          Payss applications on the website , but not to any third party
+          Kuber Pays applications on the website , but not to any third party
           websites linked to them, or any relationships you may have with the
           businesses listed on this website.
         </p>
@@ -49,7 +61,7 @@ export default function PrivacyPolicy() {
           Kuber Pay Inc. collects, receives, and securely stores your Personal
           Information to provide secure payment services. If you link a
           third-party account (“Third-Party Account Information”) with Kuber
-          Payss, specific data from that account may be shared with us based on
+          Kuber Pays, specific data from that account may be shared with us based on
           your authorization. This shared information will be protected under
           this Privacy Policy. While providing personal details is optional,
           withholding specific information may limit your ability to register or
@@ -219,7 +231,7 @@ export default function PrivacyPolicy() {
           Kuber Pay Inc. may provide references or links to third-party
           websites, products, or services for your convenience. However, these
           links do not imply any endorsement, sponsorship, or recommendation by
-          Kuber Payss. We do not share your Personal Information with these
+          Kuber Pays. We do not share your Personal Information with these
           third parties unless explicitly stated. As we are not responsible for
           their privacy practices, we strongly encourage you to review the
           privacy policies of any third-party websites you visit to understand
@@ -241,8 +253,8 @@ export default function PrivacyPolicy() {
           job functions, such as customer service personnel. While we strive to
           protect your data, we are not responsible for unauthorized internet
           interception. For security concerns, contact Kuber Pay Inc. "
-          <Link href="mailto:support@kuberpayss.com">
-            support@kuberpayss.com
+          <Link href="mailto:support@kuberpays.com">
+            support@kuberpays.com
           </Link>
         </p>
         <h6>Changes to Privacy Policy </h6>
@@ -273,7 +285,10 @@ export default function PrivacyPolicy() {
           Grievance cum Nodal Officer in writing or by raising a grievance
           ticket through the designated hyperlink provided below.
         </p>
-      </div>
+          </div>
+        </article>
+      </main>
+      <Footer className="static" />
     </div>
   );
 }

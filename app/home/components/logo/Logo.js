@@ -1,13 +1,14 @@
 import Image from "next/image";
 import styles from "./Logo.module.css";
-import logo from "../../../../public/images/kuberPay_logo.png";
+import logo from "../../../../public/images/kuberPays_logo.svg";
 import Link from "next/link";
+
 export default function Logo({ className = "" }) {
   return (
-    <Link href="/">
+    <Link href="/" className={styles.brandLink}>
       <Image
         src={logo}
-        alt="Kuberpayss Logo"
+        alt="Kuber Pays Logo"
         className={styles.logo + " " + styles[className]}
         priority
       />
