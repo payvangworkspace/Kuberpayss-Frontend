@@ -49,7 +49,7 @@ export const validateName = (name) => {
   // Trim leading and trailing whitespace
   name = name.trim();
   // Regular expression for valid names
-  const nameRegex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+  const nameRegex = /^[A-Za-z0-9 .,&()'-]+$/;
   // Check length
   if (name.length < 2 || name.length > 100) {
     return "Name is too short/long should be from 2 to 100"; // Invalid length
