@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import BootstrapJs from "./utils/bootstrap";
 import { Toaster } from "react-hot-toast";
+import DocumentTitle from "./components/DocumentTitle";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -11,14 +12,19 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Kuber Pays | Payments",
-  description: "Fast, secure payments designed for merchants who value clarity, control, and reliability.",
+  title: {
+    default: "Kuber Pays | Payments",
+    template: "Kuber Pays | %s",
+  },
+  description:
+    "Fast, secure payments designed for merchants who value clarity, control, and reliability.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
+        <DocumentTitle />
         <Toaster
           position="top-center"
           reverseOrder={false}
