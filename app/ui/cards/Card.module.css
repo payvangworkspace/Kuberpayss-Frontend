@@ -1,0 +1,48 @@
+.card {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.circle {
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  justify-items: center;
+  border-radius: 50%;
+}
+.cardBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.settleBtn{
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#total {
+  background-color: rgb(197, 237, 244);
+}
+
+#success {
+  background-color: rgb(210, 237, 213);
+}
+
+#failed {
+  background-color: rgb(244, 159, 159);
+}
+#pending {
+  background-color: rgb(244, 213, 159);
+}
+#charge {
+  background-color: rgb(183, 197, 245);
+}
+#info {
+  background-color: rgb(189, 216, 239);
+}

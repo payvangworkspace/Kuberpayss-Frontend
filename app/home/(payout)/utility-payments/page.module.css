@@ -1,0 +1,13 @@
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.utilityName:hover {
+  font-weight: bold;
+}

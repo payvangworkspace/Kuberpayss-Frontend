@@ -1,0 +1,23 @@
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.icons button,
+.icons a {
+  font-size: 11px;
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.icons a {
+  background-color: var(--primary);
+}
+.icons button {
+  background-color: darkorange;
+}

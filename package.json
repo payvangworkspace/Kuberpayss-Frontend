@@ -1,0 +1,40 @@
+{
+  "name": "kuberpayss",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "crypto-js": "^4.2.0",
+    "js-cookie": "^3.0.5",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
+    "lucide-react": "^0.562.0",
+    "moment": "^2.30.1",
+    "next": "14.2.16",
+    "react": "^18",
+    "react-apexcharts": "^1.7.0",
+    "react-click-away-listener": "^2.2.3",
+    "react-dom": "^18",
+    "react-fast-marquee": "^1.6.5",
+    "react-hot-toast": "^2.5.2",
+    "react-multi-carousel": "^2.8.5",
+    "react-multi-select-component": "^4.3.4",
+    "react-qrcode-logo": "^3.0.0",
+    "recharts": "^2.13.3",
+    "sharp": "^0.33.5",
+    "styled-components": "^6.1.13",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.16"
+  }
+}

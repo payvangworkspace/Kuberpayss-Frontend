@@ -1,0 +1,212 @@
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  --primary: #00317f;
+  --border-button: 7px;
+  --border-input: 5px;
+  --border-card: 5px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* Modal backdrop css */
+.backdrop {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+/* Modal Overlay css */
+.overlay {
+  position: fixed;
+  right: 0%;
+  width: 40%;
+  height: 100vh;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 2rem 15px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+  animation-name: anime;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-delay: 0ms;
+  overflow-y: auto;
+  h6 {
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(142, 141, 141);
+    text-transform: capitalize;
+    margin-bottom: 30px;
+  }
+  h5 {
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  button {
+    border: none;
+    padding: 3px 1.2rem;
+    background-color: rgb(251, 195, 27);
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  button:nth-child(1) {
+    background-color: lightgreen;
+  }
+}
+.overlay.w-30 {
+  width: 30%;
+}
+@keyframes anime {
+  from {
+    right: -40%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.main {
+  position: relative;
+  top: 60px;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  left: 0px;
+}
+.wrapper {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+.table_column {
+  white-space: "normal";
+  word-wrap: "break-word";
+}
+.table_profile,
+.table_delete {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+  background-color: transparent;
+  border: none;
+}
+.table_delete {
+  background: transparent;
+  border: none;
+  color: red;
+}
+.table_column small,
+.table_delete small {
+  font-size: 10px;
+}
+/* Input fields css */
+.forminput {
+  padding: 5px;
+  width: 100%;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.formspan {
+  color: red;
+}
+.formtextarea {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 5px;
+}
+
+#inputDate {
+  padding: 5px;
+  width: 100%;
+  font-size: 0.9rem;
+  width: 100%;
+  color: rgb(141, 138, 138);
+}
+
+/* button css */
+.submit,
+.reset,
+.view,
+.edit,
+.back {
+  padding: 5px 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+.submit:disabled {
+  background-color: rgba(10, 123, 10, 0.532);
+}
+.reset {
+  background-color: orange;
+}
+.view {
+  background-color: gray;
+}
+.edit {
+  background-color: rgb(129, 214, 243);
+}
+.back {
+  background-color: var(--primary);
+}
+/* Modal backdrop css */
+.backdrop {
+  padding: 20px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.accordion .accordion-item .accordion-header .accordion-button {
+  padding: 5px 1rem;
+  font-size: 0.8rem;
+}
+.accordion .accordion-item .accordion-header .accordion-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+.accordion .accordion-body {
+  padding: 5px 10px;
+}
+
+/* secret key fields */
+.actions {
+  max-width: 150px;
+  text-align: center;
+}

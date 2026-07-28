@@ -1,0 +1,106 @@
+.prevention {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.heading h6 {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 18px;
+}
+.button {
+  width: 100%;
+  color: gray;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.addbutton {
+  border: none;
+  padding: 3px 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: var(--primary);
+  color: white;
+  font-size: 13px;
+}
+.button.active {
+  background-color: var(--primary);
+  color: white;
+}
+@media screen and (max-width: 660px) {
+  .prevention {
+    max-height: 20vh;
+  }
+}
+
+/* Modal CSS */
+.modal {
+  position: fixed;
+  right: 0%;
+  width: 30%;
+  height: 100vh;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 2rem 15px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+  animation-name: anime;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-delay: 0ms;
+}
+
+.modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+
+.modal h5 {
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+}
+.modal button {
+  border: none;
+  padding: 3px 1.2rem;
+  background-color: rgb(251, 195, 27);
+  font-size: 14px;
+  border-radius: 5px;
+}
+.modal button:disabled {
+  background-color: rgb(201, 210, 201);
+}
+
+.modal button:nth-child(1) {
+  background-color: lightgreen;
+}
+
+@keyframes anime {
+  from {
+    right: -40%;
+  }
+
+  to {
+    right: 0;
+  }
+}

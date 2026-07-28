@@ -1,0 +1,57 @@
+/* Modal CSS */
+.modal {
+  position: fixed;
+  right: 0%;
+  width: 30%;
+  height: 100vh;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  z-index: 101;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 2rem 15px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+  animation-name: anime;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-delay: 0ms;
+}
+
+.modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+
+.modal h5 {
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+}
+.modal button {
+  border: none;
+  padding: 3px 1.2rem;
+  background-color: rgb(251, 195, 27);
+  font-size: 14px;
+  border-radius: 5px;
+}
+.modal button:disabled {
+  background-color: rgb(201, 210, 201);
+}
+
+.modal button:nth-child(1) {
+  background-color: lightgreen;
+}
+@keyframes anime {
+  from {
+    right: -40%;
+  }
+
+  to {
+    right: 0;
+  }
+}

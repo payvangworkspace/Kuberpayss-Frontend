@@ -1,0 +1,46 @@
+.button {
+  font-size: 14px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 solid lightgray;
+}
+.button.signup {
+  color: #00317f;
+  font-weight: 600;
+  border: 1px solid #00317f;
+}
+.button.signup:hover {
+  transform: scale(0.95);
+}
+.button.demo {
+  background-color: #00317f;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.button.demo:hover {
+  transform: scale(0.95);
+}
+.button.login {
+  background-color: #00c3ff;
+  padding: 8px;
+  color: #00317f;
+  font-weight: 800;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.button.tab {
+  background-color: #bbd2f7;
+  font-size: 0.7rem;
+  padding: 5px 1rem;
+}
+.button.tab_active {
+  background-color: #00317f;
+  color: white;
+  font-size: 0.7rem;
+  padding: 5px 1rem;
+}

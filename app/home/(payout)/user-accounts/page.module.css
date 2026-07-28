@@ -1,0 +1,19 @@
+.walletcard {
+  min-width: 250px;
+  max-width: 300px;
+}
+.table .walletrow {
+  background-color: #f8f9fa;
+}
+.table .expandedrow {
+  background-color: #e9ecef;
+}
+
+.table .card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.table .card-title {
+  font-weight: 600;
+  color: #495057;
+}

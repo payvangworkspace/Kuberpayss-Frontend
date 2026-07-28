@@ -1,0 +1,169 @@
+.table {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.export {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.export button,
+.pagination button {
+  border-radius: 5px;
+  padding: 3px 1rem;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  gap: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+.pagination button {
+  font-size: 14px;
+  padding: 3px 1.5rem;
+}
+.pagination button:disabled {
+  background-color: #00317f89;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* table css */
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.table table thead tr th {
+  font-size: 13px;
+  font-weight: 500;
+  color: gray;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0.8rem;
+  word-wrap: break-word; /* Allows long words to wrap */
+  overflow-wrap: break-word; /* Alternative to support more browsers */
+  white-space: normal; /* Allows text wrapping */
+  width: 150px;
+}
+.table table thead tr th:last-child {
+  width: 100px;
+}
+.table table tbody tr td {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0.8rem;
+  font-size: 14px;
+  word-wrap: break-word; /* Allows long words to wrap */
+  overflow-wrap: break-word; /* Alternative to support more browsers */
+  white-space: normal; /* Allows text wrapping */
+  min-width: 200px;
+}
+/* logo css */
+.logo_modal {
+  position: fixed;
+  left: 50%;
+  width: 20vw;
+  max-height: 50vh;
+  overflow-y: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+}
+.logo_modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+
+.logo_modal iframe body {
+  width: 50vw;
+  height: 60vh;
+  overflow: hidden;
+  object-fit: contain;
+}
+.logo_modal iframe {
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.logo_modal i {
+  font-size: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}
+.span span {
+  font-weight: 700;
+  font-size: 14px;
+}
+.span {
+  display: flex;
+  flex-direction: column;
+}
+.small {
+  display: flex;
+  flex-direction: column;
+}
+
+/* aquirerPrivoritymodal  */
+.aqr_modal {
+  position: fixed;
+  left: 50%;
+  width: 80vw;
+  max-height: 50vh;
+  overflow-y: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 3px 0 lightgray;
+  border-radius: 5px;
+}
+.aqr_modal h6 {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(142, 141, 141);
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
+
+.aqr_modal i {
+  font-size: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}
+.checkboxCol {
+  width: 35px !important;
+  padding: 0 !important;
+  text-align: center;
+}
+.checkboxCol input {
+  margin: 0;
+}

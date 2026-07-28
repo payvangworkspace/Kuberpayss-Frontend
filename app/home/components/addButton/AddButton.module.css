@@ -1,0 +1,13 @@
+.add {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}

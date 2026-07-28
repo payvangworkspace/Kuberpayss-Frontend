@@ -1,0 +1,16 @@
+.search {
+  padding: 5px;
+  font-size: 0.8rem;
+  width: 15rem;
+  border: 1px solid var(--primary);
+  position: relative;
+}
+.search input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.search i {
+  position: absolute;
+  right: 10px;
+}

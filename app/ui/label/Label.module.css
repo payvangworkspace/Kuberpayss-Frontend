@@ -1,0 +1,12 @@
+.label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: black;
+}
+.label span {
+  margin-left: 5px;
+  color: red;
+}
+.label.login {
+  color: white;
+}

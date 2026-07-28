@@ -1,0 +1,10 @@
+export const headers = [
+  "RESELLER ID ",
+  "RESELLER NAME ",
+  "RESELLER PHONE NUMBER",
+  "ONBOARD BY",
+  "ONBOARD DATE",
+  "STATUS",
+  "PERMISSIONS",
+  "ACTIONS",
+];

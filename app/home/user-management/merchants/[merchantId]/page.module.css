@@ -1,0 +1,196 @@
+.mainCard {
+  padding: 20px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 2px 0 gray;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+
+.mainCard h5 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: var(--primary);
+}
+
+.mainCard img {
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.secondaryCard {
+  padding: 10px 20px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 2px 0 gray;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.secondaryCard h6 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+.secondaryCard p {
+  word-break: break-all;
+}
+.info {
+  display: flex;
+  gap: 20px;
+}
+
+.designation {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: gray;
+}
+
+.employeeid {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.employeeid b {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.employeeid span {
+  color: gray;
+  font-size: 13px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+#editicon {
+  padding: 3px;
+  border-radius: 50%;
+  background-color: rgb(238, 231, 231);
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  cursor: pointer;
+  font-size: 13px;
+  height: 25px;
+}
+
+.manager {
+  height: 30px;
+  width: 30px;
+}
+
+.detail table {
+  font-size: 0.9rem;
+}
+
+.detail table tr td:nth-child(1) {
+  font-weight: 500;
+}
+
+/* tabs css */
+.button {
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  color: gray;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 0%;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary);
+  /* background: linear-gradient(
+    90deg,
+    rgba(136, 132, 216, 1) 26%,
+    rgba(130, 202, 157, 1) 88%
+  ); */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.button.active::after {
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Profile page table */
+#infotable,
+#relationtable {
+  font-size: 14px;
+}
+
+#infotable tr td:nth-child(1) {
+  font-weight: 500;
+}
+
+#infotable tr td:nth-child(2) {
+  color: gray;
+}
+
+#relationtable thead tr th {
+  font-size: 13px;
+  color: gray;
+}
+
+/* Amount limit table */
+#table {
+  font-size: 0.8rem;
+  table-layout: fixed;
+}
+
+#table thead tr th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: gray;
+}
+
+.paymentcard {
+  font-size: 0.8rem;
+  background-color: transparent;
+  text-align: start;
+  font-weight: 600;
+  border: none;
+  padding: 5px 10px;
+  position: relative;
+  border: 1px solid lightgray;
+}
+
+.paymentcard.active {
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  color: white;
+}
+
+.paymentcard.active::after {
+  content: "➔";
+  /* Unicode arrow symbol */
+  position: absolute;
+  right: 10px;
+  /* Adjust to your needs */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  /* Size of the arrow */
+}

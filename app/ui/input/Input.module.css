@@ -1,0 +1,15 @@
+.input {
+  padding: 10px;
+  font-weight: 400;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: black;
+  width: 100%;
+  display: inline;
+}
+.input.search {
+  font-size: 14px;
+  padding: 5px;
+  width: 500px;
+}

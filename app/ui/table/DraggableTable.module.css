@@ -1,0 +1,80 @@
+.draggable-table-container {
+    /* Container specific styles */
+    width: 100%;
+  }
+  
+.drag-n-drop-text {
+  font-size: 0.9em; /* Slightly larger and bolder */
+  font-weight: bold;
+  width: 100%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #01317F; /* Primary blue color */
+  user-select: none;
+  margin-bottom: 15px;
+}
+
+.draggable-table {
+  border-collapse: collapse;
+  background: #f8f9fa; /* Light gray background */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Subtle shadow */
+  width: 100%;
+  border: 1px solid #dee2e6; /* Light border */
+}
+
+.draggable-table thead th {
+  background-color: #01317F; /* Primary blue header */
+  color: white;
+  height: 30px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 12px 15px;
+  user-select: none;
+  text-align: left;
+  border-bottom: 2px solid #002157; /* Darker blue border */
+}
+
+.draggable-table tbody tr {
+  cursor: grab;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.draggable-table tbody tr:hover {
+  background-color: #e9ecef; /* Slightly darker hover */
+}
+
+.draggable-table tbody td {
+  font-size: 0.95em;
+  font-weight: 400;
+  padding: 12px 15px;
+  user-select: none;
+  border-top: 1px solid #dee2e6;
+}
+
+.draggable-table tbody tr:nth-child(even) {
+  background-color: #f2f4f6; /* Slightly different even row */
+}
+
+.drag-over {
+  background-color: #add8e6 !important; /* Light blue highlight when dragging over */
+}
+
+.drag-over td {
+  color: #000000 !important; /* Ensure text is readable on highlight */
+}
+
+.is-dragging {
+  background: #b0e0e6 !important; /* Light cyan for the dragged row */
+  opacity: 0.8;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); /* More prominent shadow for dragging */
+}
+
+.is-dragging td {
+  color: #000000 !important;
+}
+
+.blueBg{
+  background-color: #01317F !important; /* Primary blue background */
+  color: white !important; /* White text for contrast */
+}

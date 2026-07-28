@@ -1,0 +1,12 @@
+export const headers = [
+  "MERCHANT ",
+  "CREATED DATE",
+  "CURRENCY",
+  "PREVIOUS BALANCE",
+  "AMOUNT TRANSFERRED",
+  "UPDATED BALANCE",
+  "TRANSFER TYPE",
+  "REMARK",
+  "RECIEPT ID",
+  "IMAGE",
+];

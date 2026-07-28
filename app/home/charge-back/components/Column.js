@@ -1,0 +1,10 @@
+export const headers = [
+  "CHARGEBACK ID",
+  "TRANSACTION ID ",
+  "CHARGEBACK AMOUNT ",
+  "CHARGEBACK DATE",
+  "CHARGEBACK TYPE",
+  "MERCHANT NAME",
+  "STATUS ",
+  "ACTIONS",
+];
