@@ -19,14 +19,10 @@ import {
 } from "@/app/utils/dateFormatter";
 import PaymentTypeData from "../../graphs/PaymentTypeData";
 import useGetRequest from "@/app/hooks/useFetch";
-
-const ALL_CURRENCIES = [
-  { currencyCode: "USD", currencyName: "US Dollar" },
-  // { currencyCode: "INR", currencyName: "Indian Rupee" },
-  // { currencyCode: "GBP", currencyName: "Pound Sterling" },
-  // { currencyCode: "EUR", currencyName: "Euro" },
-  // { currencyCode: "UGX", currencyName: "Uganda Shilling" },
-];
+import {
+  SUPPORTED_CURRENCIES,
+  getCurrencySymbol,
+} from "@/app/utils/currency";
 
 const ALL_MERCHANT_OPTION = {
   id: "",
@@ -115,7 +111,7 @@ const mergePieData = (pieResponses) => {
 };
 
 const Filter = ({ role, isSubMerchant, userEmail, isAdmin, reseller }) => {
-  const [symbol, setSymbol] = useState("USh");
+  const [symbol, setSymbol] = useState(getCurrencySymbol("USD"));
   const [allMerchants, setAllMerchants] = useState([]);
 
   const [merchant, setMerchant] = useState(ALL_MERCHANT_OPTION);
@@ -184,10 +180,7 @@ const Filter = ({ role, isSubMerchant, userEmail, isAdmin, reseller }) => {
   const currencyTypes = useMemo(() => {
     if (merchant.id === "") {
       // "All" merchants selected, show all currencies (without 'All' option)
-      return ALL_CURRENCIES.map((currency) => ({
-        id: currency.currencyCode,
-        name: currency.currencyName,
-      }));
+      return SUPPORTED_CURRENCIES;
     }
     // A specific merchant is selected
     if (!currencyResponse || !currencyResponse.data) return [];
@@ -417,23 +410,7 @@ const Filter = ({ role, isSubMerchant, userEmail, isAdmin, reseller }) => {
 
   const handleCurrencyChange = (id, name) => {
     setCurrencyType({ id, name });
-    switch (id) {
-      case "USD":
-        setSymbol("$");
-        break;
-      case "UGX":
-        setSymbol("USh");
-        break;
-      case "EUR":
-        setSymbol("€");
-        break;
-      case "GBP":
-        setSymbol("£");
-        break;
-      default:
-        setSymbol("₹");
-        break;
-    }
+    setSymbol(getCurrencySymbol(id));
   };
   return (
     <div className="wrapper">
@@ -561,6 +538,7 @@ const Filter = ({ role, isSubMerchant, userEmail, isAdmin, reseller }) => {
       <TransactionAmount
         data={graphDataToShow}
         rangeLabel={`${dateRange.dateFrom} — ${dateRange.dateTo}`}
+        symbol={symbol}
       />
     </div>
   );

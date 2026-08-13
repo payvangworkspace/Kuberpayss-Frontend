@@ -11,7 +11,7 @@ const formatMoney = (n) =>
     maximumFractionDigits: 2,
   });
 
-const TransactionAmount = ({ data, rangeLabel = "" }) => {
+const TransactionAmount = ({ data, rangeLabel = "", symbol = "$" }) => {
   const [state, setState] = useState(null);
 
   useEffect(() => {
@@ -69,7 +69,9 @@ const TransactionAmount = ({ data, rangeLabel = "" }) => {
             </span>
             <div>
               <span className={styles.kpiLabel}>Total Amount</span>
-              <p className={styles.kpiValue}>{formatMoney(stats.total)}</p>
+              <p className={styles.kpiValue}>
+                {symbol} {formatMoney(stats.total)}
+              </p>
             </div>
           </div>
           <div className={`${styles.kpiCard} ${styles.kpiGreen}`}>
@@ -78,7 +80,9 @@ const TransactionAmount = ({ data, rangeLabel = "" }) => {
             </span>
             <div>
               <span className={styles.kpiLabel}>Average / Hour</span>
-              <p className={styles.kpiValue}>{formatMoney(stats.average)}</p>
+              <p className={styles.kpiValue}>
+                {symbol} {formatMoney(stats.average)}
+              </p>
             </div>
           </div>
           <div className={`${styles.kpiCard} ${styles.kpiOrange}`}>
@@ -87,7 +91,9 @@ const TransactionAmount = ({ data, rangeLabel = "" }) => {
             </span>
             <div>
               <span className={styles.kpiLabel}>Peak Hour</span>
-              <p className={styles.kpiValue}>{formatMoney(stats.peak)}</p>
+              <p className={styles.kpiValue}>
+                {symbol} {formatMoney(stats.peak)}
+              </p>
               {stats.peakLabel && (
                 <span className={styles.kpiMeta}>{stats.peakLabel}</span>
               )}
@@ -99,7 +105,9 @@ const TransactionAmount = ({ data, rangeLabel = "" }) => {
             </span>
             <div>
               <span className={styles.kpiLabel}>Lowest Hour</span>
-              <p className={styles.kpiValue}>{formatMoney(stats.lowest)}</p>
+              <p className={styles.kpiValue}>
+                {symbol} {formatMoney(stats.lowest)}
+              </p>
               {stats.lowestLabel && (
                 <span className={styles.kpiMeta}>{stats.lowestLabel}</span>
               )}
@@ -121,7 +129,10 @@ const TransactionAmount = ({ data, rangeLabel = "" }) => {
           <span>
             Highest transaction amount was around{" "}
             <strong>{stats.peakLabel || "—"}</strong> with{" "}
-            <strong>{formatMoney(stats.peak)}</strong>.
+            <strong>
+              {symbol} {formatMoney(stats.peak)}
+            </strong>
+            .
           </span>
         </div>
       </div>

@@ -20,15 +20,7 @@ import DownloadDetailModal from "@/app/ui/table/DownloadDetailModal";
 import useGetRequest from "@/app/hooks/useFetch";
 import styles from "../page.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
-
-const currencyTypes = [
-  // { id: "", name: "All" },
-  // { id: "UGX", name: "Uganda Shilling" },
-  { id: "USD", name: "US Dollar" },
-  // { id: "EUR", name: "Euro" },
-  // { id: "GBP", name: "Pound Sterling" },
-  // { id: "INR", name: "Indian Rupee" },
-];
+import { SUPPORTED_CURRENCIES as currencyTypes } from "@/app/utils/currency";
 
 const paymentStatusTypes = [
   { id: "", name: "All" },

@@ -13,8 +13,10 @@ import Dropdown from "@/app/ui/dropdown/Dropdown";
 import { queryStringWithDate } from "@/app/services/queryString";
 import styles from "../../settlements.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
-
-const currencyTypes = [{ id: "USD", name: "US Dollar" }];
+import {
+  SUPPORTED_CURRENCIES as currencyTypes,
+  getCurrencySymbol,
+} from "@/app/utils/currency";
 
 const settlementStatusTypes = [
   { id: 1, name: "ALL" },
@@ -62,7 +64,10 @@ const BodyMapping = ({ data = [], loading }) => {
             <td>{item.customerEmail || "NA"}</td>
             <td>{item.customerContactNumber || "NA"}</td>
             <td>{item.ordRequestId || "NA"}</td>
-            <td>{item.netSettleAmount || 0.0} $</td>
+            <td>
+              {item.netSettleAmount || 0.0}{" "}
+              {getCurrencySymbol(item.currencyCode)}
+            </td>
             <td>{dateFormatter(item.createdDate)}</td>
             <td>{item.refundHoldReason || "NA"}</td>
             <td>

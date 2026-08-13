@@ -23,14 +23,10 @@ import { successMsg } from "@/app/services/notify";
 import ChargeBack from "./AddChargeBackModal";
 import styles from "../../settlements.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
-
-const currencyTypes = [
-  { id: "USD", name: "US Dollar" },
-  // { id: "INR", name: "Indian Rupee" },
-  // { id: "UGX", name: "Uganda Shilling" },
-  // { id: "EUR", name: "Euro" },
-  // { id: "GBP", name: "Pound Sterling" },
-];
+import {
+  SUPPORTED_CURRENCIES as currencyTypes,
+  getCurrencySymbol,
+} from "@/app/utils/currency";
 const settlementStatusTypes = [
   { id: 1, name: "ALL" },
   { id: 2, name: "SETTLE" },
@@ -83,7 +79,10 @@ const BodyMapping = ({
                 <td>{item.pgCharge || 0.0}</td>
                 <td>{item.bankCharge || 0.0}</td>
                 <td>{item.gstVat || 0.0}</td>
-                <td>{item.netSettleAmount || 0.0} $</td>
+                <td>
+                  {item.netSettleAmount || 0.0}{" "}
+                  {getCurrencySymbol(item.currencyCode)}
+                </td>
                 <td>{dateFormatter(item.createdDate)}</td>
                 <td>{item.utr || "NA"}</td>
                 <td>{item.rollingReserveAmount}</td>
@@ -418,6 +417,7 @@ const SettlementList = ({
           <ChargeBack
             name={merchant.name}
             id={orderId}
+            currencyCode={currencyType.id}
             onClick={() => setViewChargeBackModal(false)}
             onSuccess={() => {
               getAllSettlement(

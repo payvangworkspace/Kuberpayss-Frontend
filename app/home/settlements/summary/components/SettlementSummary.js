@@ -8,6 +8,11 @@ import Label from "@/app/ui/label/Label";
 import React, { useEffect, useState } from "react";
 import ChargeCard from "@/app/ui/cards/ChargeCard";
 import Settle from "../../components/settleModal/SettleModal";
+import {
+  SUPPORTED_CURRENCIES as currencyTypes,
+  DEFAULT_CURRENCY,
+  getCurrencySymbol,
+} from "@/app/utils/currency";
 
 const SettlementSummary = ({ role, userId, resellerRole }) => {
   const [merchant, setMerchant] = useState({
@@ -15,6 +20,8 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
     name: "Select Merchant",
   });
   const [merchantList, setMerchantList] = useState([]);
+  const [currencyType, setCurrencyType] = useState(DEFAULT_CURRENCY);
+  const symbol = getCurrencySymbol(currencyType.id);
 
   const {
     loading: merchantLoading,
@@ -24,9 +31,11 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
   } = usePostRequest(endPoints.users.allMerchantList);
   useEffect(() => {
     if (merchant.id) {
-      getSummaryData(endPoints.payin.settlementSummary + `${merchant.id}`);
+      getSummaryData(
+        `${endPoints.payin.settlementSummary}${merchant.id}?currencyCode=${currencyType.id}`,
+      );
     }
-  }, [merchant.id]);
+  }, [merchant.id, currencyType.id]);
   const { getData: getSummaryData, response: summaryResponse } =
     useGetRequest();
 
@@ -84,6 +93,9 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
   const handleMerchantChange = (id, name) => {
     setMerchant({ id, name });
   };
+  const handleCurrencyChange = (id, name) => {
+    setCurrencyType({ id, name });
+  };
   const [viewSettle, setViewSettle] = useState(false);
   const handleSettleClick = () => {
     setViewSettle(true);
@@ -100,7 +112,7 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
             onClick={() => setViewSettle(false)}
             onSuccess={() => {
               getSummaryData(
-                endPoints.payin.settlementSummary + `${merchant.id}`,
+                `${endPoints.payin.settlementSummary}${merchant.id}?currencyCode=${currencyType.id}`,
               );
             }}
             settlementId={null}
@@ -120,6 +132,18 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
                 onChange={handleMerchantChange}
                 id={"userId"}
                 value={"fullName"}
+              />
+            </div>
+            <div className="col-md-6 col-sm-12 mb-3">
+              <Label htmlFor="currencyType" label="Currency" />
+              <Dropdown
+                initialLabel="Select Currency"
+                selectedValue={currencyType}
+                options={currencyTypes}
+                onChange={handleCurrencyChange}
+                id="id"
+                value="name"
+                all={false}
               />
             </div>
           </div>
@@ -142,35 +166,35 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
                     <ChargeCard
                       type="Total Payable Amount"
                       value={summary.totalPayableAmount ?? 0}
-                      symbol="$"
+                      symbol={symbol}
                     />
                   </div>
                   <div className="col-md-6 col-sm-12 mb-3">
                     <ChargeCard
                       type="Total Settlement Amount"
                       value={summary.totalSettlementAmount ?? 0.0}
-                      symbol="$"
+                      symbol={symbol}
                     />
                   </div>
                   <div className="col-md-6 col-sm-12 mb-3">
                     <ChargeCard
                       type="Total Sale Amount"
                       value={summary.totalSaleAmount ?? 0.0}
-                      symbol="$"
+                      symbol={symbol}
                     />
                   </div>
                   <div className="col-md-6 col-sm-12 mb-3">
                     <ChargeCard
                       type="Total Refund Amount"
                       value={summary.totalRefundAmount ?? 0.0}
-                      symbol="$"
+                      symbol={symbol}
                     />
                   </div>
                   <div className="col-md-6 col-sm-12 mb-3">
                     <ChargeCard
                       type="Total Auth Amount"
                       value={summary.totalAuthAmount ?? 0.0}
-                      symbol="$"
+                      symbol={symbol}
                     />
                   </div>
                   <div className="col-md-6 col-sm-12 mb-3">
@@ -189,7 +213,7 @@ const SettlementSummary = ({ role, userId, resellerRole }) => {
                     <ChargeCard
                       type="Left Settlement Amount"
                       value={summary.leftSettlementAmount ?? 0.0}
-                      symbol="$"
+                      symbol={symbol}
                       onClick={handleSettleClick}
                       allAmountsSettled={summary.allAmountsSettled}
                     />

@@ -11,7 +11,7 @@ import { dateTimeFormatterCaps } from "@/app/utils/dateFormatter";
 const Backdrop = () => {
   return <div className="backdrop"></div>;
 };
-const Overlay = ({ merchant, id, onClick, onSuccess }) => {
+const Overlay = ({ merchant, id, onClick, onSuccess, currencyCode = "USD" }) => {
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
     internalNotes: "",
@@ -52,7 +52,7 @@ const Overlay = ({ merchant, id, onClick, onSuccess }) => {
       chargebackType: chargeBackType.id || "",
       reason: formData.reason || "",
       chargebackAmount: formData.chargebackAmount || "",
-      currencyCode: "USD",
+      currencyCode: currencyCode || "USD",
       responseDeadline: dateTimeFormatterCaps(formData.responseDeadline || ""),
       internalNotes: formData.internalNotes || "",
     };
@@ -157,7 +157,7 @@ const Overlay = ({ merchant, id, onClick, onSuccess }) => {
     </div>
   );
 };
-const ChargeBack = ({ name, id, onClick, onSuccess }) => {
+const ChargeBack = ({ name, id, onClick, onSuccess, currencyCode }) => {
   return (
     <Fragment>
       {createPortal(
@@ -170,6 +170,7 @@ const ChargeBack = ({ name, id, onClick, onSuccess }) => {
           id={id}
           onClick={onClick}
           onSuccess={onSuccess}
+          currencyCode={currencyCode}
         />,
         document.getElementById("overlay")
       )}

@@ -18,6 +18,7 @@ import DownloadDetailModal from "@/app/ui/table/DownloadDetailModal";
 import useTableExports from "@/app/hooks/useTableExports";
 import styles from "../page.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
+import { getCurrencySymbol } from "@/app/utils/currency";
 
 const transactionStatusTypes = [
   { id: 1, name: "All" },
@@ -41,7 +42,7 @@ const getStatusClass = (status) => {
   }
 };
 
-const BodyMapping = ({ data = [], loading, merchant, isAdmin }) => {
+const BodyMapping = ({ data = [], loading, merchant, isAdmin, symbol = "$" }) => {
   const [viewModal, setViewModal] = useState(false);
   const [transactionData, setTransactionData] = useState(null);
 
@@ -74,7 +75,9 @@ const BodyMapping = ({ data = [], loading, merchant, isAdmin }) => {
           data.map((item) => (
             <tr key={item.transactionPayoutId || "NA"}>
               <td>{item.orderId || "NA"}</td>
-              <td>{item.amount || 0.0}</td>
+              <td>
+                {symbol} {item.amount || 0.0}
+              </td>
               <td>{item.transferType || "NA"}</td>
               <td>
                 <span className={getStatusClass(item.transactionStatus)}>
@@ -106,7 +109,7 @@ const BodyMapping = ({ data = [], loading, merchant, isAdmin }) => {
 };
 
 const PayoutTransactionList = ({ role, isMerchant, userId }) => {
-  const [symbol, setSymbol] = useState("₹");
+  const [symbol, setSymbol] = useState(getCurrencySymbol("USD"));
 
   const [currencyType, setCurrencyType] = useState({
     id: "",
@@ -115,23 +118,7 @@ const PayoutTransactionList = ({ role, isMerchant, userId }) => {
 
   const handleCurrencyChange = (id, name) => {
     setCurrencyType({ id, name });
-    switch (id) {
-      case "USD":
-        setSymbol("$");
-        break;
-      case "UGX":
-        setSymbol("USh");
-        break;
-      case "EUR":
-        setSymbol("€");
-        break;
-      case "GBP":
-        setSymbol("£");
-        break;
-      default:
-        setSymbol("₹");
-        break;
-    }
+    setSymbol(getCurrencySymbol(id));
   };
 
   const [merchant, setMerchant] = useState({
@@ -588,6 +575,7 @@ const PayoutTransactionList = ({ role, isMerchant, userId }) => {
             loading={transactionLoading}
             merchant={merchant.name || ""}
             isAdmin={role}
+            symbol={symbol}
           />
         </Table>
       </div>

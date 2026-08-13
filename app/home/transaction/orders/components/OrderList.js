@@ -20,13 +20,10 @@ import useTableExports from "@/app/hooks/useTableExports";
 import DownloadDetailModal from "@/app/ui/table/DownloadDetailModal";
 import styles from "../page.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
-const currencyTypes = [
-  // { id: "INR", name: "Indian Rupee" },
-  // { id: "UGX", name: "Uganda Shilling" },
-  { id: "USD", name: "US Dollar" },
-  // { id: "EUR", name: "Euro" },
-  // { id: "GBP", name: "Pound Sterling" },
-];
+import {
+  SUPPORTED_CURRENCIES as currencyTypes,
+  getCurrencySymbol,
+} from "@/app/utils/currency";
 const orderStatusTypes = [
   { id: 1, name: "All" },
   { id: 2, name: "Pending" },
@@ -82,7 +79,7 @@ const OrderList = ({
   admin,
   subAdmin,
 }) => {
-  const [symbol, setSymbol] = useState("$");
+  const [symbol, setSymbol] = useState(getCurrencySymbol("USD"));
 
   const [currencyType, setCurrencyType] = useState({
     id: currencyTypes[0].id,
@@ -209,23 +206,7 @@ const OrderList = ({
 
   const handleCurrencyChange = (id, name) => {
     setCurrencyType({ id, name });
-    switch (id) {
-      case "USD":
-        setSymbol("$");
-        break;
-      case "UGX":
-        setSymbol("USh");
-        break;
-      case "EUR":
-        setSymbol("€");
-        break;
-      case "GBP":
-        setSymbol("£");
-        break;
-      default:
-        setSymbol("$");
-        break;
-    }
+    setSymbol(getCurrencySymbol(id));
   };
 
   const [loader, setLoader] = useState(false);

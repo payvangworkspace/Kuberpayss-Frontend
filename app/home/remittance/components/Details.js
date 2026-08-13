@@ -18,14 +18,7 @@ import { loadingMsg } from "@/app/utils/message";
 import RemittanceDetails from "../modal/remittanceDetails";
 import styles from "../page.module.css";
 import tableStyles from "@/app/ui/table/Table.module.css";
-
-const currencyTypes = [
-  // { id: "INR", name: "Indian Rupee" },
-  // { id: "UGX", name: "Uganda Shilling" },
-  { id: "USD", name: "US Dollar" },
-  // { id: "EUR", name: "Euro" },
-  // { id: "GBP", name: "Pound Sterling" },
-];
+import { SUPPORTED_CURRENCIES as currencyTypes } from "@/app/utils/currency";
 
 const BodyMapping = ({ data = [], loading = true, role, merchant }) => {
   const [viewModal, setViewModal] = useState(false);

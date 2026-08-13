@@ -11,6 +11,7 @@ import { queryStringWithKeyword } from "@/app/services/queryString";
 import { addSinglePayout } from "@/app/formBuilder/payout";
 import BeneficiaryDetails from "./BeneficiaryDetails";
 import styles from "./AddForm.module.css";
+import { getCurrencySymbol } from "@/app/utils/currency";
 
 export default function Single({
   formData,
@@ -35,7 +36,7 @@ export default function Single({
     id: "",
     name: "Select Currency",
   });
-  const [symbol, setSymbol] = useState("₹");
+  const [symbol, setSymbol] = useState(getCurrencySymbol("USD"));
 
   const [countryTypes, setCountryTypes] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState({
@@ -156,23 +157,7 @@ export default function Single({
       currencyCode: id,
     }));
 
-    switch (id) {
-      case "USD":
-        setSymbol("$");
-        break;
-      case "UGX":
-        setSymbol("USh");
-        break;
-      case "EUR":
-        setSymbol("€");
-        break;
-      case "GBP":
-        setSymbol("£");
-        break;
-      default:
-        setSymbol("₹");
-        break;
-    }
+    setSymbol(getCurrencySymbol(id));
   };
 
   const handleCountryChange = (id, name) => {
@@ -310,7 +295,11 @@ export default function Single({
           {renderError("orderId")}
         </div>
         <div className={styles.field}>
-          <Label htmlFor="amount" label="Amount" required={true} />
+          <Label
+            htmlFor="amount"
+            label={`Amount (${symbol})`}
+            required={true}
+          />
           <input
             type="number"
             name="amount"
